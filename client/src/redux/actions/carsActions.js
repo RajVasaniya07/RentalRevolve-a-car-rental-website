@@ -67,3 +67,23 @@ export const editCar=(reqObj)=>async dispatch=>{
         dispatch({type: 'LOADING' , payload:false})
     }
 }
+
+export const deleteCar=(reqObj)=>async dispatch=>{
+
+  dispatch({type: 'LOADING' , payload:true})
+
+  try {
+       await axios.post('/api/cars/deletecar' , reqObj)
+     
+       dispatch({type: 'LOADING' , payload:false})
+       message.success('Car deleted successfully')
+       setTimeout(() => {
+          window.location.reload()
+       }, 500);
+  } catch (error) {
+      console.log(error)
+      dispatch({type: 'LOADING' , payload:false})
+  }
+    
+
+}

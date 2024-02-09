@@ -1,10 +1,16 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import { useSelector, useDispatch } from "react-redux";
 import { Col, Row, Divider, DatePicker, Checkbox, Edit } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { Popconfirm, message } from "antd";
+import { deleteCar} from "../redux/actions/carsActions";
 
 
 const CarCard1 = ({ carData }) => {
+
+  //const { car } = useSelector((state) => state.carsReducer);
+  const dispatch = useDispatch();
   return (
     <li>
       <div className="featured-car-card">
@@ -65,9 +71,18 @@ const CarCard1 = ({ carData }) => {
                         style={{ color: "green", cursor: "pointer" }}
                       />
                       </Link>
+                      <Popconfirm
+                      title="Are you sure to delete this car?"
+                      onConfirm={()=>{dispatch(deleteCar({carid : carData._id}))}}
+                      
+                      okText="Yes"
+                      cancelText="No"
+                    >
                       <DeleteOutlined
                         style={{ color: "red", cursor: "pointer" }}
                       />
+                    </Popconfirm>
+
 
             {/* <button className="btn1 mr-2"><Link to={/booking/${car._id}}>Book Now</Link></button> */}
           </div>

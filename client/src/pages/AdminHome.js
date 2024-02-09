@@ -6,6 +6,8 @@ import DefaultLayout from '../components/DefaultLayout'
 import { getAllCars } from '../redux/actions/carsActions'
 import { Button, Col, Row } from 'antd'
 import {Link} from 'react-router-dom'
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+
 
 
 

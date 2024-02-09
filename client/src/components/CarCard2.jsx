@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import { Col, Row, Divider, DatePicker, Checkbox, Edit } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { Popconfirm, message } from "antd";
+import { deleteCar} from "../redux/actions/carsActions";
 
 
 const CarCard2 = ({ carData }) => {
@@ -64,9 +66,18 @@ const CarCard2 = ({ carData }) => {
                         className="mr-3"
                         style={{ color: "green", cursor: "pointer" }}
                       />
+                      
+                     <Popconfirm
+                      title="Are you sure to delete this car?"
+                      onConfirm={()=>{dispatch(deleteCar({carid : car._id}))}}
+                      
+                      okText="Yes"
+                      cancelText="No"
+                    >
                       <DeleteOutlined
                         style={{ color: "red", cursor: "pointer" }}
                       />
+                    </Popconfirm>
 
             {/* <button className="btn1 mr-2"><Link to={/booking/${car._id}}>Book Now</Link></button> */}
           </div>

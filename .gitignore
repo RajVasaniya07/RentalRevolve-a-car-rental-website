@@ -12,8 +12,10 @@
 /build
 
 # misc
+/.env
+/db.js
 .env
-db.js
+.db.js
 .DS_Store
 .env.local
 .env.development.local

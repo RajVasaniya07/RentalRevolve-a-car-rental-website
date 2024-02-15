@@ -27,6 +27,7 @@ const BookingCar = () => {
     <DefaultLayout>
         <ul className='featured-car-list' style={{margin:'200px'}}>
       {cars.map((car) => (
+        
         <CarCard key={car._id} carData={car} />
       ))}
     </ul>

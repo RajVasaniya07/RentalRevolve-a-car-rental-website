@@ -7,7 +7,33 @@ const { uploadFiles } = require('./index');
 app.use(express.json())
 const cors=require('cors')
 app.use(cors({ origin: 'http://localhost:3000' }));
+const connection = require("./db");
+const adminAuth = require("./routes/adminAuth")
+const userRoutes = require("./routes/users");
+const authRoutes = require("./routes/auth");
+const passwordResetRoutes = require("./routes/passwordReset");
+const Admin =require('./models/admin');
+const AdminUser= require('./routes/adminUser');
 initialize();
+
+
+
+// middlewares
+app.use(express.json());
+app.use(cors());
+
+app.get('/getAdmins',(req,res) => {
+    Admin.find()
+    .then(admin => res.json(admin))
+    .catch(err => res.json(err))
+})
+
+// routes
+app.use("/api/users", userRoutes);
+app.use("/api/adminAuth",adminAuth);
+app.use("/api/auth", authRoutes);
+app.use("/api/password-reset", passwordResetRoutes);
+app.use("/api/adminUser",AdminUser);
 
 app.use('/api/cars/' , require('./routes/carsRoute'))
 // app.use('/api/users/' , require('./routes/usersRoute'))

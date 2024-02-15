@@ -54,9 +54,7 @@ const CarCard = ({ carData }) => {
             <p className="card-price">
               <strong>{carData.rentPerHour} rs.</strong> / Hour
             </p>
-            <button className="btn fav-btn" aria-label="Add to favourite list">
-              <ion-icon name="heart-outline"></ion-icon>
-            </button>
+            
             <button className="btn"><Link to={`/booking/${carData._id}`}>Book Now</Link></button>
 
             {/* <button className="btn1 mr-2"><Link to={/booking/${car._id}}>Book Now</Link></button> */}

@@ -16,7 +16,22 @@
     <!-- 
       - google font link
     -->
-
+    <style>
+      /* Style for the black and white or blurred images */
+      #carCarousel img {
+        filter: grayscale(100%);
+      }
+      #carCarousel .carousel-item.active img {
+        filter: none;
+      }
+      .carousel-thumbnails img {
+        filter: grayscale(100%);
+      }
+      .carousel-thumbnails img.active {
+        filter: none;
+      }
+    </style>
+  
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
    
@@ -27,7 +42,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
       rel="stylesheet">
-
+      <!-- <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    /> -->
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -39,7 +57,21 @@
   <!-- 
     - ionicon link
   -->
+<!--   
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+    // Add event listener to update thumbnail styles when the carousel slides
+    $("#carCarousel").on("slid.bs.carousel", function () {
+      var activeIndex = $(".carousel-item.active").index();
+      $(".carousel-thumbnails img").removeClass("active");
+      $(
+        '.carousel-thumbnails img[data-slide-to="' + activeIndex + '"]'
+      ).addClass("active");
+    });
+  </script>
   </body>
 </html>

@@ -14,10 +14,13 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:5000/api/auth";
+			const url = "http://localhost:5000/api/adminAuth";
 			const { data: res } = await axios.post(url, data);
-			localStorage.setItem("token", res.data);
-			window.location = "/addCar";
+			localStorage.setItem("token", res.data.token);
+			localStorage.setItem("email", data.email);
+			localStorage.setItem("admin", res.data.admin);
+
+			window.location = "/Admin";
 		} catch (error) {
 			if (
 				error.response &&
@@ -53,7 +56,7 @@ const Login = () => {
 							required
 							className={styles.input}
 						/>
-						<Link to="/forgot-password" style={{ alignSelf: "flex-start" }}>
+						<Link to="/forgot-password-admin" style={{ alignSelf: "flex-start" }}>
 							<p style={{ padding: "0 15px" }}>Forgot Password ?</p>
 						</Link>
 						{error && <div className={styles.error_msg}>{error}</div>}

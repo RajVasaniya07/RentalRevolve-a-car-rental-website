@@ -10,7 +10,7 @@ const PasswordReset = () => {
 	const [error, setError] = useState("");
 	const param = useParams();
 	console.log(param)
-	const url = `http://localhost:5000/api/password-reset-user/${param.id}/user/${param.token}`;
+	const url = `http://localhost:5000/api/password-reset-seller/${param.id}/seller/${param.token}`;
 
 	useEffect(() => {
 		const verifyUrl = async () => {
@@ -30,7 +30,7 @@ const PasswordReset = () => {
 			const { data } = await axios.post(url, { password });
 			setMsg(data.message);
 			setError("");
-			window.location = "/login";
+			window.location = "/sellerLogin";
 		} catch (error) {
 			if (
 				error.response &&

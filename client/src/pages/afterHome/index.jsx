@@ -1,0 +1,207 @@
+import { useSelector , useDispatch } from 'react-redux'
+
+import CarCard1 from '../../components/CarCard1'; 
+import React , {useState,useEffect} from 'react'
+import DefaultLayout from '../../components/DefaultLayout'
+import { getAllCars } from '../../redux/actions/carsActions'
+import { Button, Col, Row } from 'antd'
+import {Link} from 'react-router-dom'
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { Container } from 'react-bootstrap';
+import '../afterHome/style.module.css'
+// import '../../images/review.png'
+
+const handleSubmit1 = async (e) => {
+    e.preventDefault();
+    try {
+        window.location = "/login";
+    } catch (error) {
+        if (
+            error.response &&
+            error.response.status >= 400 &&
+            error.response.status <= 500
+        ) {
+            // setError(error.response.data.message);
+        }
+    }
+};
+const handleSubmit2 = async (e) => {
+    e.preventDefault();
+    try {
+        window.location = "/adminlogin";
+    } catch (error) {
+        if (
+            error.response &&
+            error.response.status >= 400 &&
+            error.response.status <= 500
+        ) {
+            // setError(error.response.data.message);
+        }
+    }
+};
+const handleSubmit3 = async (e) => {
+    e.preventDefault();
+    try {
+        window.location = "/sellerLogin";
+    } catch (error) {
+        if (
+            error.response &&
+            error.response.status >= 400 &&
+            error.response.status <= 500
+        ) {
+            // setError(error.response.data.message);
+        }
+    }
+};
+const index = () => {
+  return (
+    
+
+   
+        <section class="text-gray-600 body-font overflow-hidden">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-col text-center w-full mb-20">
+          <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Pricing</h1>
+          <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-500">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical.</p>
+          
+        </div>
+        <div class="flex flex-wrap -m-4">
+          <div class="p-4 xl:w-1/3 md:w-1/2 w-full">
+            <div class="h-full p-6 rounded-lg border-2  flex flex-col relative overflow-hidden" style={{border:"solid #092635 2px "}}>
+              <h1 class="text-5xl text-gray-900 pb-4 mb-4 border-b border-gray-200 leading-none">User</h1>
+              <p class="flex items-center text-gray-600 mb-2">
+                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>Vexillologist pitchfork
+              </p>
+              <p class="flex items-center text-gray-600 mb-2">
+                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>Tumeric plaid portland
+              </p>
+              <p class="flex items-center text-gray-600 mb-6">
+                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>Mixtape chillwave tumeric
+              </p>
+              <button class="flex items-center mt-auto text-white  border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded" style={{background:"#092635"}} onClick={handleSubmit1}>Button
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="p-4 xl:w-1/3 md:w-1/2 w-full">
+            <div class="h-full p-6 rounded-lg border-2  flex flex-col relative overflow-hidden" style={{border:"solid #092635 2px "}}>
+              <h1 class="text-5xl text-gray-900 pb-4 mb-4 border-b border-gray-200 leading-none">Admin</h1>
+
+              <p class="flex items-center text-gray-600 mb-2">
+                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>Vexillologist pitchfork
+              </p>
+              <p class="flex items-center text-gray-600 mb-2">
+                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>Tumeric plaid portland
+              </p>
+              <p class="flex items-center text-gray-600 mb-2">
+                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>Hexagon neutra unicorn
+              </p>
+              <p class="flex items-center text-gray-600 mb-6">
+                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>Mixtape chillwave tumeric
+              </p>
+              <button class="flex items-center mt-auto text-white  border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded" style={{background:"#092635"}} onClick={handleSubmit2}>Button
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="p-4 xl:w-1/3 md:w-1/2 w-full">
+            <div class="h-full p-6 rounded-lg border-2 flex flex-col relative overflow-hidden" style={{border:"solid #092635 2px "}}>
+            <h1 class="text-5xl text-gray-900 pb-4 mb-4 border-b border-gray-200 leading-none">Seller</h1>
+
+              <p class="flex items-center text-gray-600 mb-2">
+                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>Vexillologist pitchfork
+              </p>
+              <p class="flex items-center text-gray-600 mb-2">
+                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>Tumeric plaid portland
+              </p>
+              <p class="flex items-center text-gray-600 mb-2">
+                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>Hexagon neutra unicorn
+              </p>
+              <p class="flex items-center text-gray-600 mb-2">
+                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>Vexillologist pitchfork
+              </p>
+              <p class="flex items-center text-gray-600 mb-6">
+                <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" class="w-3 h-3" viewBox="0 0 24 24">
+                    <path d="M20 6L9 17l-5-5"></path>
+                  </svg>
+                </span>Mixtape chillwave tumeric
+              </p>
+              <button class="flex items-center mt-auto text-white  border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded" style={{background:"#092635"}}  onClick={handleSubmit3}>Button
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    
+      
+
+
+)}
+
+export default index
+
+
+
+{/* <button onClick={handleSubmit1}>
+                user
+            </button>
+            <button onClick={handleSubmit2}>
+                admin
+            </button>
+            <button onClick={handleSubmit3}>
+                seller
+            </button> */}

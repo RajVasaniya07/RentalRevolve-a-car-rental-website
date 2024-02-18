@@ -3,25 +3,26 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 
-const Login = () => {
-	const [data, setData] = useState({ email: "", password: "" });
+const Signup = () => {
+	const [data, setData] = useState({
+		firstName: "",
+		lastName: "",
+		email: "",
+		password: "",
+	});
 	const [error, setError] = useState("");
+	const [msg, setMsg] = useState("");
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
 	};
-	
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:5000/api/auth";
+			const url = "http://localhost:5000/api/sellerUser";
 			const { data: res } = await axios.post(url, data);
-			localStorage.setItem("token", res.data.token);
-			localStorage.setItem("email", data.email);
-			localStorage.setItem("customer", res.data.customer);
-			localStorage.setItem("id", res.data._id);
-			window.location = "/";
+			setMsg(res.message);
 		} catch (error) {
 			if (
 				error.response &&
@@ -34,11 +35,37 @@ const Login = () => {
 	};
 
 	return (
-		<div className={styles.login_container}>
-			<div className={styles.login_form_container}>
+		<div className={styles.signup_container}>
+			<div className={styles.signup_form_container}>
 				<div className={styles.left}>
+					<h1>Welcome Back</h1>
+					<Link to="/login">
+						<button type="button" className={styles.white_btn}>
+							Sign in
+						</button>
+					</Link>
+				</div>
+				<div className={styles.right}>
 					<form className={styles.form_container} onSubmit={handleSubmit}>
-						<h1>Login to Your Account</h1>
+						<h1>Create Account</h1>
+						<input
+							type="text"
+							placeholder="First Name"
+							name="firstName"
+							onChange={handleChange}
+							value={data.firstName}
+							required
+							className={styles.input}
+						/>
+						<input
+							type="text"
+							placeholder="Last Name"
+							name="lastName"
+							onChange={handleChange}
+							value={data.lastName}
+							required
+							className={styles.input}
+						/>
 						<input
 							type="email"
 							placeholder="Email"
@@ -57,26 +84,16 @@ const Login = () => {
 							required
 							className={styles.input}
 						/>
-						<Link to="/forgot-password-user" style={{ alignSelf: "flex-start" }}>
-							<p style={{ padding: "0 15px" }}>Forgot Password ?</p>
-						</Link>
 						{error && <div className={styles.error_msg}>{error}</div>}
+						{msg && <div className={styles.success_msg}>{msg}</div>}
 						<button type="submit" className={styles.green_btn}>
-							Sign In
-						</button>
-					</form>
-				</div>
-				<div className={styles.right}>
-					<h1>New Here ?</h1>
-					<Link to="/signup">
-						<button type="button" className={styles.white_btn}>
 							Sign Up
 						</button>
-					</Link>
+					</form>
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default Login;
+export default Signup;

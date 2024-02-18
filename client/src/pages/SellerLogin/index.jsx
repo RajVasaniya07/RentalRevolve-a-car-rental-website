@@ -15,13 +15,12 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:5000/api/auth";
+			const url = "http://localhost:5000/api/sellerAuth";
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data.token);
 			localStorage.setItem("email", data.email);
-			localStorage.setItem("customer", res.data.customer);
-			localStorage.setItem("id", res.data._id);
-			window.location = "/";
+			localStorage.setItem("seller", res.data.seller);
+			window.location = "/Main";
 		} catch (error) {
 			if (
 				error.response &&
@@ -57,7 +56,9 @@ const Login = () => {
 							required
 							className={styles.input}
 						/>
-						<Link to="/forgot-password-user" style={{ alignSelf: "flex-start" }}>
+						
+						
+						<Link to="/forgot-password-seller" style={{ alignSelf: "flex-start" }}>
 							<p style={{ padding: "0 15px" }}>Forgot Password ?</p>
 						</Link>
 						{error && <div className={styles.error_msg}>{error}</div>}
@@ -68,7 +69,7 @@ const Login = () => {
 				</div>
 				<div className={styles.right}>
 					<h1>New Here ?</h1>
-					<Link to="/signup">
+					<Link to="/SellerSingup">
 						<button type="button" className={styles.white_btn}>
 							Sign Up
 						</button>

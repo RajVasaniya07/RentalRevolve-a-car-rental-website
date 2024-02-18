@@ -8,6 +8,13 @@
 
 
 
+/* custom.css */
+.ant-btn-primary {
+  /* Your custom styles here */
+  background-color: blue !important; /* Example change */
+  color: white !important; /* Example change */
+}
+
 
 
 /*-----------------------------------*\

@@ -10,7 +10,7 @@ const ForgotPassword = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = `http://localhost:5000/api/password-reset`;
+			const url = `http://localhost:5000/api/password-reset-user`;
 			const { data } = await axios.post(url, { email });
 			setMsg(data.message);
 			setError("");
@@ -39,6 +39,8 @@ const ForgotPassword = () => {
 					required
 					className={styles.input}
 				/>
+				
+
 				{error && <div className={styles.error_msg}>{error}</div>}
 				{msg && <div className={styles.success_msg}>{msg}</div>}
 				<button type="submit" className={styles.green_btn}>

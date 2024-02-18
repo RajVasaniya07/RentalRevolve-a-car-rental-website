@@ -33,7 +33,7 @@
 	border: none;
 	outline: none;
 	padding: 12px 0;
-	background-color: #3bb19b;
+	background-color: #092635;
 	color: white;
 	border-radius: 20px;
 	width: 180px;
@@ -56,5 +56,5 @@
 }
 
 .success_msg {
-	background-color: #5cdd5c;
+	background-color: #71de71f5;
 }

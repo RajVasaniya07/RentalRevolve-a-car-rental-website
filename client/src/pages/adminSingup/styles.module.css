@@ -22,7 +22,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background-color: #3bb19b;
+	background-color: #092635;
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
 }
@@ -80,7 +80,7 @@
 }
 
 .success_msg {
-	background-color: #5cdd5c;
+	background-color: #71de71f5;
 }
 
 .white_btn,
@@ -97,7 +97,7 @@
 }
 
 .green_btn {
-	background-color: #3bb19b;
+	background-color: #092635;
 	color: white;
 	margin: 10px;
 }

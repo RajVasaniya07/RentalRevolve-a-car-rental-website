@@ -37,7 +37,11 @@
 	font-size: 40px;
 	margin-top: 0;
 }
-
+h1{
+	font-size: 30px;
+	font-weight: bold;
+	color : black;
+  }
 .input {
 	outline: none;
 	border: none;

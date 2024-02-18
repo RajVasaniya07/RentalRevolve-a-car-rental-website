@@ -17,20 +17,14 @@ const Signup = () => {
 		setData({ ...data, [input.name]: input.value });
 	};
 
+	const user=localStorage.setItem("")
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
 			const url = "http://localhost:5000/api/users";
 			const { data: res } = await axios.post(url, data);
 			setMsg(res.message);
-			// if (res.user && res.user._id) {
-			// 	// Store user object in local storage
-			// 	localStorage.setItem("user", JSON.stringify(res.user));
-			// } else {
-			// 	// Handle error if user object or _id is missing
-			// 	setError("Failed to retrieve user information from the server.");
-			// }
-
 		} catch (error) {
 			if (
 				error.response &&

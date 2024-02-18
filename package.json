@@ -21,6 +21,7 @@
     "mongoose": "^8.0.4",
     "nodemailer": "^6.9.9",
     "nodemon": "^3.0.2",
+    "razorpay": "^2.9.2",
     "redux-thunk": "^3.1.0"
   }
 }

@@ -27,13 +27,16 @@ const AdminHome = () => {
   
 
   return (
-    <DefaultLayout>
+    <>
+    <button className="adminaddcar">
+              <a href="/addcar">ADD CAR</a>
+            </button>
         <ul className='featured-car-list' style={{margin:'200px'}}>
       {cars.map((car) => (
         <CarCard1 key={car._id} carData={car} />
       ))}
     </ul>
-    </DefaultLayout>
+    </>
     
   );
 };

@@ -1,4 +1,8 @@
 const express = require('express')
+const Razorpay = require("razorpay");
+// const razorpay = require("razorpay");
+const crypto = require("crypto");
+require("dotenv").config();
 const app = express()
 const port = process.env.PORT || 5000
 const dbConnection = require('./db')
@@ -14,6 +18,7 @@ const authRoutes = require("./routes/auth");
 const passwordResetRoutes = require("./routes/passwordReset");
 const Admin =require('./models/admin');
 const AdminUser= require('./routes/adminUser');
+const bookingsRoute=require('./routes/bookingsRoute')
 initialize();
 
 
@@ -37,7 +42,7 @@ app.use("/api/adminUser",AdminUser);
 
 app.use('/api/cars/' , require('./routes/carsRoute'))
 // app.use('/api/users/' , require('./routes/usersRoute'))
-// app.use('/api/bookings/' , require('./routes/bookingsRoute'))
+app.use('/api/bookings/' , require('./routes/bookingsRoute'))
 // app.use('/api/upload/' , require('./routes/imageRoute'))
 
 const path = require('path')
@@ -99,6 +104,48 @@ app.post('/api/uploadMultiple', async (req, res) => {
     }
 });
 
+
+app.post("/order", async (req,res) => {
+
+    try{
+
+    const razorpay = new Razorpay({
+        key_id: process.env.RAZORPAY_KEY_ID,
+        key_secret: process.env.RAZORPAY_SECRET,
+    });
+
+    const options=req.body;
+    const order= await razorpay.orders.create(options);
+
+    if(!order) {
+        return res.status(500).send("Error");
+    }
+ 
+    res.json(order);
+}catch(err){
+    console.log(err);
+    res.status(500).send("Error");
+}
+
+});
+app.post("/order/validate", async (req, res) => {
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+      req.body;
+  
+    const sha = crypto.createHmac("sha256", process.env.RAZORPAY_SECRET);
+    //order_id + "|" + razorpay_payment_id
+    sha.update(`${razorpay_order_id}|${razorpay_payment_id}`);
+    const digest = sha.digest("hex");
+    if (digest !== razorpay_signature) {
+      return res.status(400).json({ msg: "Transaction is not legit!" });
+    }
+  
+    res.json({
+      msg: "success",
+      orderId: razorpay_order_id,
+      paymentId: razorpay_payment_id,
+    });
+  });
 
 
 // app.get('/editcar/:carid', (req, res) => {

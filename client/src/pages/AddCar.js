@@ -134,7 +134,7 @@ for (let i = 0; i < urls.length; i++) {
   
 
   return (
-    <DefaultLayout>
+    <>
       {loading && <Spinner />}
       <br />
       <br />
@@ -180,12 +180,14 @@ for (let i = 0; i < urls.length; i++) {
               <Input />
             </Form.Item>
             <div className="text-right">
+              <center>
               <button className="btn1" type="submit">ADD CAR</button>
+              </center>
             </div>
           </Form>
         </Col>
       </Row>
-    </DefaultLayout>
+    </>
   );
 }
 

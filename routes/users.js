@@ -33,6 +33,7 @@ router.post("/", async (req, res) => {
 		res
 			.status(201)
 			.send({ message: "An Email sent to your account please verify" });
+
 	} catch (error) {
 		console.log(error);
 		res.status(500).send({ message: "Internal Server Error" });
@@ -42,6 +43,7 @@ router.post("/", async (req, res) => {
 router.get("/:id/verify/:token", async (req, res) => {
     try {
         const user = await User.findById(req.params.id );
+
         console.log(user);
         if (!user) return res.status(400).send({ message: "Invalid User" });
 
@@ -56,6 +58,7 @@ router.get("/:id/verify/:token", async (req, res) => {
        // await token.remove();
 
         res.status(200).send({ message: "Email verified successfully" });
+		
     } catch (error) {
         res.status(500).send({ message: "Internal Server Error" });
         console.log(error);

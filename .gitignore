@@ -5,17 +5,21 @@
 /.pnp
 .pnp.js
 
+# Ignore .env file
+.env
+
+# Ignore db.js file
+db.js
+
 # testing
 /coverage
 
 # production
 /build
 
+
+
 # misc
-/.env
-/db.js
-.env
-.db.js
 .DS_Store
 .env.local
 .env.development.local

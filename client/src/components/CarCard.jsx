@@ -44,10 +44,6 @@ const CarCard = ({ carData }) => {
                 <ion-icon name='hardware-chip-outline'></ion-icon>
                 <span className="card-item-text">{carData.carType}</span>
               </li>
-
-
-
-            
           </ul>
 
           <div className="card-price-wrapper">
@@ -55,7 +51,9 @@ const CarCard = ({ carData }) => {
               <strong>{carData.rentPerHour} rs.</strong> / Hour
             </p>
             
-            <button className="btn"><Link to={`/booking/${carData._id}`}>Book Now</Link></button>
+            <button className="btn">
+              <Link to={`/booking/${carData._id}`}>Book Now</Link>
+              </button>
 
             {/* <button className="btn1 mr-2"><Link to={/booking/${car._id}}>Book Now</Link></button> */}
           </div>

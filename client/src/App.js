@@ -7,6 +7,7 @@ import Register from './pages/Register';
 import BookingCar from './pages/BookingCar';
 import Booking from './pages/Booking';
 import AddCar from './pages/AddCar';
+import UserBookings from './pages/UserBookings';
 // import 'antd/dist/antd.css';
 import ImageUploadForm from './components/ImageUploadForm';
 import AdminHome from './pages/AdminHome';
@@ -35,10 +36,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/bookingcar" element={<BookingCar />} />
-          <Route path="/booking/:carid" element={isAuthenticatedUser ?<Booking />:  <Login/>} />        
+          <Route path="/booking/:carid" element={isAuthenticatedUser ?<Booking />:  <Login/>} /> 
+          <Route path='/userbookings' element={<UserBookings/>} />       
             <Route path="/addcar" element={<AddCar />} />
           <Route path="/admin" element={<AdminHome />} />
           <Route path="/editcar/:carid" element={<EditCar />} />
+
           {user && <Route path="/" exact element={<Main />} />}
 			<Route path="/signup" exact element={<Signup />} />
 			<Route path="/login" exact element={<Login />} />

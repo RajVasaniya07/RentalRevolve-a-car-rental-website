@@ -3,10 +3,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { carsReducer } from './reducers/carsReducer';
 import { alertsReducer } from './reducers/alertsReducer';
+import { bookingsReducer } from './reducers/bookingsReducer';
 
 const rootReducer = combineReducers({
   carsReducer,
- alertsReducer
+ alertsReducer,
+ bookingsReducer,
+
 });
 
 // Use composeWithDevTools correctly

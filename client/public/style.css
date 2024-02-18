@@ -14,6 +14,31 @@
   #CUSTOM PROPERTY
 \*-----------------------------------*/
 
+.filter-container {
+  position: fixed;
+  top: 50px; /* Adjust this value based on your layout */
+  left: 20%; /* Adjust this value based on your layout */
+  transform: translateX(-50%);
+  z-index: 999; /* Adjust this value if necessary to ensure it's above other elements */
+  background-color: #fff; /* Optional: Adjust the background color as needed */
+  padding: 10px; /* Optional: Add padding to the filter container */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+}
+
+.adminaddcar {
+  position: fixed;
+  top: 50px; /* Adjust this value based on your layout */
+  left: 90%; /* Adjust this value based on your layout */
+  transform: translateX(-50%);
+  z-index: 999; /* Adjust this value if necessary to ensure it's above other elements */
+  background-color: #fff; /* Optional: Adjust the background color as needed */
+  padding: 10px; /* Optional: Add padding to the filter container */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+}
+
+
+
+
 :root {
 
     /**

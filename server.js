@@ -15,9 +15,17 @@ const connection = require("./db");
 const adminAuth = require("./routes/adminAuth")
 const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
-const passwordResetRoutes = require("./routes/passwordReset");
 const Admin =require('./models/admin');
 const AdminUser= require('./routes/adminUser');
+const Seller = require('./models/seller');
+const SellerUser =require('./routes/sellerUsers');
+const SellerAuth = require('./routes/sellerAuth');
+
+const userpass=require('./routes/passwordResetUser');
+const sellerpass=require('./routes/passwordResetSeller');
+const adminpass=require('./routes/passwordResetAdmin');
+
+
 const bookingsRoute=require('./routes/bookingsRoute')
 initialize();
 
@@ -33,12 +41,24 @@ app.get('/getAdmins',(req,res) => {
     .catch(err => res.json(err))
 })
 
+// app.get('/getSeller',(req,res) => {
+//     Seller.find()
+//     .then(seller => res.json(seller))
+//     .catch(err => res.json(err))
+// })
+
+
 // routes
 app.use("/api/users", userRoutes);
 app.use("/api/adminAuth",adminAuth);
 app.use("/api/auth", authRoutes);
-app.use("/api/password-reset", passwordResetRoutes);
+app.use("/api/password-reset-user", userpass);
+app.use("/api/password-reset-seller", sellerpass);
+app.use("/api/password-reset-admin", adminpass);
 app.use("/api/adminUser",AdminUser);
+app.use("/api/sellerUser",SellerUser);
+app.use("/api/sellerAuth",SellerAuth);
+
 
 app.use('/api/cars/' , require('./routes/carsRoute'))
 // app.use('/api/users/' , require('./routes/usersRoute'))

@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const carSchema = new mongoose.Schema({
     name: { type: String, required: true },
+    email:{type: String, required: false},
     image: { type: String, required: true },
     images: [String],
     capacity: { type: Number, required: true },

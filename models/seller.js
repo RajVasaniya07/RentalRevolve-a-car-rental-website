@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
-mongoose.set('strictQuery', false); // Add this line to your Mongoose configuration
-
 const jwt = require("jsonwebtoken");
 const Joi = require("joi");
 const passwordComplexity = require("joi-password-complexity");
+mongoose.set('strictQuery', false); // Add this line to your Mongoose configuration
 
 const userSchema = new mongoose.Schema({
 	firstName: { type: String, required: true },
@@ -11,8 +10,7 @@ const userSchema = new mongoose.Schema({
 	email: { type: String, required: true },
 	password: { type: String, required: true },
 	verified: { type: Boolean, default: false },
-	admin: { type: Boolean, default: true },
-
+	seller: { type: Boolean, default: true },
 
 });
 
@@ -23,7 +21,7 @@ userSchema.methods.generateAuthToken = function () {
 	return token;
 };
 
-const Admin = mongoose.model("admin", userSchema);
+const Seller = mongoose.model("seller", userSchema);
 
 const validate = (data) => {
 	const schema = Joi.object({
@@ -35,4 +33,4 @@ const validate = (data) => {
 	return schema.validate(data);
 };
 
-module.exports = { Admin, validate };
+module.exports = { Seller, validate };

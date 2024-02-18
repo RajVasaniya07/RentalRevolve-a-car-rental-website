@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User } = require("../models/user");
+const{Admin}=require('../models/admin');
 const Token = require("../models/token");
 const crypto = require("crypto");
 const sendEmail = require("../utils/sendEmail");
@@ -17,7 +18,7 @@ router.post("/", async (req, res) => {
 		if (error)
 			return res.status(400).send({ message: error.details[0].message });
 
-		let user = await User.findOne({ email: req.body.email });
+		let user = await Admin.findOne({ email: req.body.email });
 		if (!user)
 			return res
 				.status(409)
@@ -32,7 +33,7 @@ router.post("/", async (req, res) => {
 		}
 
 		// const url = `${process.env.BASE_URL}api/password-reset/${user._id}/${token.token}/`;
-		const url = `http://localhost:3000/password-reset/${user._id}/${token.token}/`;
+		const url = `http://localhost:3000/password-reset-admin/${user._id}/admin/${token.token}/`;
 		await sendEmail(user.email, "Password Reset", url);
 
 		res
@@ -44,9 +45,9 @@ router.post("/", async (req, res) => {
 });
 
 // verify password reset link
-router.get("/:id/:token", async (req, res) => {
+router.get("/:id/admin/:token", async (req, res) => {
 	try {
-		const user = await User.findOne({ _id: req.params.id });
+		const user = await Admin.findOne({ _id: req.params.id });
 		if (!user) return res.status(400).send({ message: "Invalid link" });
 
 		const token = await Token.findOne({
@@ -62,7 +63,7 @@ router.get("/:id/:token", async (req, res) => {
 });
 
 //  set new password
-router.post("/:id/:token", async (req, res) => {
+router.post("/:id/admin/:token", async (req, res) => {
 	try {
 		const passwordSchema = Joi.object({
 			password: passwordComplexity().required().label("Password"),
@@ -71,7 +72,7 @@ router.post("/:id/:token", async (req, res) => {
 		if (error)
 			return res.status(400).send({ message: error.details[0].message });
 
-		const user = await User.findOne({ _id: req.params.id });
+		const user = await Admin.findOne({ _id: req.params.id });
 		if (!user) return res.status(400).send({ message: "Invalid link" });
 
 		const token = await Token.findOne({

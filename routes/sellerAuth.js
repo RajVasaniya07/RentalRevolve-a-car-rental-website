@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User } = require("../models/user");
 const { Admin } = require("../models/admin");
+const {Seller} =require('../models/seller');
 const Token = require("../models/token");
 const crypto = require("crypto");
 const sendEmail = require("../utils/sendEmail");
@@ -13,7 +14,7 @@ router.post("/", async (req, res) => {
 		if (error)
 			return res.status(400).send({ message: error.details[0].message });
 
-		const user = await User.findOne({ email: req.body.email });
+		const user = await Seller.findOne({ email: req.body.email });
 		if (!user)
 			return res.status(401).send({ message: "Invalid Email or Password" });
 
@@ -31,7 +32,7 @@ router.post("/", async (req, res) => {
 					userId: user._id,
 					token: crypto.randomBytes(32).toString("hex"),
 				}).save();
-					const url = `${process.env.BASE_URL}users/${user._id}/verify/${token.token}`;
+				const url = `${process.env.BASE_URL}users/${user._id}/verify/${token.token}`;
 				// const url = ` http://localhost:3000/users/${user._id}/verify/${token.token}`;
 				
 				await sendEmail(user.email, "Verify Email", url);
@@ -43,9 +44,8 @@ router.post("/", async (req, res) => {
 		}
 
 		const token = user.generateAuthToken();
-		const customer= true;
-		// res.status(200).send({ data: { token, _id: user._id }, message: "logged in successfully" });
-		res.status(200).send({ data:{token,customer,_id: user._id} , message: "logged in successfully" });
+		const seller= true;
+		res.status(200).send({ data: {token,seller}, message: "logged in successfully" });
 	} catch (error) {
 		res.status(500).send({ message: "Internal Server Error" });
 	}

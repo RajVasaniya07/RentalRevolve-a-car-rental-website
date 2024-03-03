@@ -1,6 +1,6 @@
-/*-----------------------------------*\
+/-----------------------------------\
   #style.css
-\*-----------------------------------*/
+\-----------------------------------/
 
 /**
  * copyright 2022 codewithsadee
@@ -8,43 +8,11 @@
 
 
 
-/* custom.css */
-.ant-btn-primary {
-  /* Your custom styles here */
-  background-color: blue !important; /* Example change */
-  color: white !important; /* Example change */
-}
 
 
-
-/*-----------------------------------*\
+/-----------------------------------\
   #CUSTOM PROPERTY
-\*-----------------------------------*/
-
-.filter-container {
-  position: fixed;
-  top: 80px; /* Adjust this value based on your layout */
-  left: 20%; /* Adjust this value based on your layout */
-  transform: translateX(-50%);
-  z-index: 999; /* Adjust this value if necessary to ensure it's above other elements */
-  background-color: #fff; /* Optional: Adjust the background color as needed */
-  padding: 10px; /* Optional: Add padding to the filter container */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
-}
-
-.adminaddcar {
-  position: fixed;
-  top: 50px; /* Adjust this value based on your layout */
-  left: 90%; /* Adjust this value based on your layout */
-  transform: translateX(-50%);
-  z-index: 999; /* Adjust this value if necessary to ensure it's above other elements */
-  background-color: #fff; /* Optional: Adjust the background color as needed */
-  padding: 10px; /* Optional: Add padding to the filter container */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
-}
-
-
-
+\-----------------------------------/
 
 :root {
 
@@ -128,9 +96,9 @@
   
   
   
-  /*-----------------------------------*\
+  /-----------------------------------\
     #RESET
-  \*-----------------------------------*/
+  \-----------------------------------/
   
   *, *::before, *::after {
     margin: 0;
@@ -194,9 +162,9 @@
   
   
   
-  /*-----------------------------------*\
+  /-----------------------------------\
     #REUSED STYLE
-  \*-----------------------------------*/
+  \-----------------------------------/
   
   .container { padding-inline: 15px; }
   
@@ -265,9 +233,9 @@
   
   
   
-  /*-----------------------------------*\
+  /-----------------------------------\
     #HEADER
-  \*-----------------------------------*/
+  \-----------------------------------/
   
   .header-contact { display: none; }
   
@@ -378,9 +346,9 @@
   
   
   
-  /*-----------------------------------*\
+  /-----------------------------------\
     #HERO
-  \*-----------------------------------*/
+  \-----------------------------------/
   
   .hero { padding-top: 120px; }
   
@@ -438,9 +406,9 @@
   
   
   
-  /*-----------------------------------*\
+  /-----------------------------------\
     #FEATURED CAR
-  \*-----------------------------------*/
+  \-----------------------------------/
   
   .featured-car .title-wrapper {
     display: flex;
@@ -596,9 +564,9 @@
   
   
   
-  /*-----------------------------------*\
+  /-----------------------------------\
     #GET START
-  \*-----------------------------------*/
+  \-----------------------------------/
   
   .get-start .section-title { margin-bottom: 25px; }
   
@@ -688,9 +656,9 @@
   
   
   
-  /*-----------------------------------*\
+  /-----------------------------------\
     #BLOG
-  \*-----------------------------------*/
+  \-----------------------------------/
   
   .blog .section-title { margin-bottom: 30px; }
   
@@ -783,9 +751,9 @@
   
   
   
-  /*-----------------------------------*\
+  /-----------------------------------\
     #FOOTER
-  \*-----------------------------------*/
+  \-----------------------------------/
   
   .footer {
     background: var(--alice-blue-4);
@@ -864,9 +832,9 @@
   
   
   
-  /*-----------------------------------*\
+  /-----------------------------------\
     #MEDIA QUERIES
-  \*-----------------------------------*/
+  \-----------------------------------/
   
   /**
    * responsive for large than 350px screen

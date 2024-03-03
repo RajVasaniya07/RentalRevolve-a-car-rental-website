@@ -18,6 +18,23 @@ function AddCar() {
     console.log(files);
   }, [files]);
 
+  // useEffect(() => {
+  //   // Assuming you have fetched renter emails from the server
+  //   const renterEmails = ["renter1@example.com", "renter2@example.com"];
+
+  //   // Send a POST request to your server to store renter emails in MongoDB
+  //   fetch('/storeRenterEmails', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({ renterEmails }),
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => console.log(data))
+  //     .catch(error => console.error(error));
+  // }, []);
+
   const handleSingleFileChange = (event) => {
     const file = event.target.files[0];
     setFile(file);
@@ -123,15 +140,26 @@ for (let i = 0; i < urls.length; i++) {
         values.images = responseDataMultiple.urls.map(url => url.objectUrl);
       }
       console.log("444444444",file,files);
-
+      const email = localStorage.getItem("email");
       // Dispatch addCar action once after uploading images
-      dispatch(addCar(values));
+      dispatch(addCar({...values,email}));
       console.log("After dispatching addCar:", values);
     } catch (error) {
       console.error('Error occurred:', error);
     }
   };
+  const check = (values) => {
+    if (localStorage.getItem("email") === values.email) {
+      return true;
+    } else {
+      window.location = "/addcar";
+      return false; // Add this line to make sure the function returns a value
+    }
+  };
   
+  
+  const formRef = React.createRef();
+
 
   return (
     <>
@@ -141,12 +169,18 @@ for (let i = 0; i < urls.length; i++) {
       <br />
       <Row justify="center mt-5">
         <Col lg={12} sm={24} xs={24} className="p-2">
-          <Form className="bs1 p-2" layout="vertical" onFinish={onFinish}>
+          <Form className="bs1 p-2" layout="vertical" onFinish={onFinish} ref={formRef}>
             <h3>Add New Car</h3>
             <hr />
-            <Form.Item name="name" label="Car name" rules={[{ required: true }]}>
+            <Form.Item name="name" label="Car name" rules={[{ required: true }]} >
               <Input />
             </Form.Item>
+            <Form.Item name="email" label="Email" rules={[{ required: true }]} >
+  <Input  />
+</Form.Item>
+
+
+
             <Form.Item label="Upload single image" rules={[{ required: true }]}>
               <input type="file" onChange={handleSingleFileChange} accept="image/*" />
               {singleObjectUrl && <p>Uploaded: {singleObjectUrl}</p>}
@@ -181,7 +215,17 @@ for (let i = 0; i < urls.length; i++) {
             </Form.Item>
             <div className="text-right">
               <center>
-              <button className="btn1" type="submit">ADD CAR</button>
+              <button
+  className="btn1"
+  type="submit"
+  onClick={() => {
+    const formValues = formRef.current.getFieldsValue(); // Assuming you have a form reference named formRef
+    check(formValues);
+  }}
+>
+  ADD CAR
+</button>
+
               </center>
             </div>
           </Form>

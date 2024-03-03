@@ -64,6 +64,8 @@ app.use('/api/cars/' , require('./routes/carsRoute'))
 // app.use('/api/users/' , require('./routes/usersRoute'))
 app.use('/api/bookings/' , require('./routes/bookingsRoute'))
 // app.use('/api/upload/' , require('./routes/imageRoute'))
+app.use('/api/userdetails/' , require('./routes/userRoute'))
+app.use('/api/sellerdetails/' , require('./routes/sellerRoute'))
 
 const path = require('path')
 

@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
 	verified: { type: Boolean, default: false },
 	customer: { type: Boolean, default: true },
 
-});
+}, { timestamps: true });
 
 userSchema.methods.generateAuthToken = function () {
 	const token = jwt.sign({ _id: this._id }, process.env.JWTPRIVATEKEY, {

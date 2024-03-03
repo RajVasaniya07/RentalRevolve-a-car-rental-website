@@ -174,7 +174,7 @@ const Description = () => {
     {/* {loading && <Spinner />} */}
     {car && (
       <div style={{height:"600px",width:"700px", marginTop:"100px"}}>
-        <section className="description" style={{ padding: "50px", }}>
+        <section className="description" >
           <p className="pre" style={{ fontSize: "50px" }}>{car.name}</p>
           <div className="price">
             <p> <b>{car.rentPerHour}</b> Rent Per hour/-</p>
@@ -184,8 +184,7 @@ const Description = () => {
             <p>Max Persons :<b>{car.capacity}</b></p>
           </div>
         </section>
-
-        <Divider dashed style={{ borderColor: "black" }}>
+          <Divider dashed style={{ borderColor: "black" }}>
           Select Time Slots
         </Divider>
 

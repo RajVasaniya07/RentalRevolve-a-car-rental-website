@@ -34,6 +34,7 @@ router.post("/editcar", async (req, res) => {
     const car = await Car.findOne({ _id: req.body._id });
     car.name = req.body.name;
     car.image = req.body.image;
+    car.email = req.body.email;
     car.capacity = req.body.capacity;
     car.fuelType = req.body.fuelType;
     car.year=req.body.year;
@@ -59,5 +60,31 @@ router.post("/deletecar", async (req, res) => {
     return res.status(400).json(error);
   }
 });
+
+
+router.post('/storeRenterEmails', async (req, res) => {
+  const { renterEmails } = req.body;
+
+  try {
+    // Iterate through renter emails and store them in MongoDB
+    for (const email of renterEmails) {
+      // Create a new car instance with the email
+      const newCar = new carModel({ email });
+
+      // Save the new car document to the database
+      await newCar.save();
+    }
+
+    return res.status(201).json({ message: 'Renter emails stored successfully' });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+
+
+
+
 
 module.exports = router;

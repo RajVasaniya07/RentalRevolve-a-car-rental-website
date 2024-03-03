@@ -701,7 +701,7 @@ header nav .right .cart button.checkout:hover {
 }
 
 .description p.pre {
-  color: var(--orange);
+  color: #092635;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 14px;

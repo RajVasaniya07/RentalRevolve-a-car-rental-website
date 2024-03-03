@@ -17,7 +17,7 @@ const Signup = () => {
 		setData({ ...data, [input.name]: input.value });
 	};
 
-	const user=localStorage.setItem("")
+	// const user=localStorage.setItem("")
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();

@@ -29,11 +29,81 @@ function Booking(props) {
     return <p>Loading...</p>; // Render a loading indicator while Redux state is loading
   }
 
+  const handleLogout = () => {
+    window.location ="/BookingCar";
+  };
+  
+  const onclick = () => {
+    window.location ="/";
+  };
+  
+  const onclick1 = () => {
+    window.location ="/userbookings";
+  };
+  
+  
+  const handleLogout1 = () => {
+    if (localStorage.getItem('email')) {
+      localStorage.removeItem('email');
+      localStorage.removeItem('token');
+      localStorage.removeItem('seller');
+      localStorage.removeItem('customer');
+      window.location = "/";
+    }
+    else{
+      window.location = "/afterHome";
+    }
+    };
+
   return (
-    <>
-      <br />
-      <br />
+    <><header className="header" data-header>
+    <div className="container">
+      <div className="overlay" data-overlay />
       <h1>Booking</h1>
+
+      <a href="#" className="logo">
+      </a>
+      <nav className="navbar" data-navbar>
+        <ul className="navbar-list">
+          
+        </ul>
+      </nav>
+      <div className="header-actions">
+        
+      <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick}>
+          <span id="aria-label-txt">Home</span>
+        </button>
+
+        <button className="btn" aria-labelledby="aria-label-txt" onClick={handleLogout1}>
+          <span id="aria-label-txt">			{localStorage.getItem('email') ? 'Logout' : 'Login'}
+</span>
+        </button>
+
+
+      <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick1} >
+          <span id="aria-label-txt">User Bookings</span>
+        </button>
+
+      
+
+        <button className="btn" aria-labelledby="aria-label-txt" href="/BookingCar" onClick={handleLogout}>
+          <span id="aria-label-txt">Explore cars</span>
+        </button>
+        <button className="btn user-btn" aria-label="Profile">
+        <ion-icon name="person-outline" />
+        </button>
+
+        <button className="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
+          <span className="one" />
+          <span className="two" />
+          <span className="three" />
+        </button>
+      </div>
+    </div>
+  </header>
+      <br />
+      <br />
+      {/* <center><h1 style={{display:"inline"}}>Booking</h1></center> */}
       {car ? <CarDetails car={car} /> : <p>Car details not found</p>}
     </>
   );

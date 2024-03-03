@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
 	admin: { type: Boolean, default: true },
 
 
-});
+}, { timestamps: true });
 
 userSchema.methods.generateAuthToken = function () {
 	const token = jwt.sign({ _id: this._id }, process.env.JWTPRIVATEKEY, {

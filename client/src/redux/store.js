@@ -4,11 +4,16 @@ import thunk from 'redux-thunk';
 import { carsReducer } from './reducers/carsReducer';
 import { alertsReducer } from './reducers/alertsReducer';
 import { bookingsReducer } from './reducers/bookingsReducer';
+import { usersReducer } from './reducers/usersReducer';
+import { sellersReducer } from './reducers/sellersReducer';
 
 const rootReducer = combineReducers({
   carsReducer,
  alertsReducer,
  bookingsReducer,
+ usersReducer,
+ sellersReducer
+ 
 
 });
 

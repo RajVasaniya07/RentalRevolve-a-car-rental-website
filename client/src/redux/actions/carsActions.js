@@ -35,7 +35,7 @@ export const addCar = (reqObj) => async (dispatch) => {
     message.success('New car added successfully');
 
     setTimeout(() => {
-      window.location.href = '/BookingCar';
+      window.location.href = '/Main';
     }, 500);
   } catch (error) {
     // Log the error details for debugging
@@ -61,7 +61,7 @@ export const editCar=(reqObj)=>async dispatch=>{
          dispatch({type: 'LOADING' , payload:false})
          message.success('Car details updated successfully')
          setTimeout(() => {
-            window.location.href='/admin'
+            window.location.href='/Main'
          }, 500);
     } catch (error) {
         console.log(error)

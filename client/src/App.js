@@ -11,7 +11,9 @@ import ImageUploadForm from './components/ImageUploadForm';
 import AdminHome from './pages/AdminHome';
 import EditCar from './pages/EditCar';
 import UserBookings from './pages/UserBookings';
-
+import Carchart from './pages/admindashboard/Cardata';
+import UserBookingtwo from './pages/admindashboard/Revenue';
+import Dashboard from './pages/Dashboard';
 import { Navigate } from "react-router-dom";
 import Main from "./pages/Main/index";
 import Signup from "./pages/Singup/index";
@@ -47,6 +49,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}/>
+          {/* {/* <Route path="/admindashboard" element={< UserBooking/>}/> */}
+          <Route path="/admindashboardd" element={<Carchart/>}/>
+          <Route path="/dashboard" element={< Dashboard/>}/>
           <Route path="/login" element={<Login />} />
           <Route path="/bookingcar" element={isseller ?<Main />:  <BookingCar/>}  />
           <Route path="/booking/:carid" element={isAuthenticatedUser ?<Booking />:  <Login/>} />  

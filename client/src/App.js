@@ -11,7 +11,7 @@ import ImageUploadForm from './components/ImageUploadForm';
 import AdminHome from './pages/AdminHome';
 import EditCar from './pages/EditCar';
 import UserBookings from './pages/UserBookings';
-import Carchart from './pages/admindashboard/Cardata';
+import Carchart from './pages/admindashboard/Usersdata';
 import UserBookingtwo from './pages/admindashboard/Revenue';
 import Dashboard from './pages/Dashboard';
 import { Navigate } from "react-router-dom";
@@ -50,7 +50,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}/>
           {/* {/* <Route path="/admindashboard" element={< UserBooking/>}/> */}
-          <Route path="/admindashboardd" element={<Carchart/>}/>
+          {/* <Route path="/admindashboardd" element={<Carchart/>}/> */}
           <Route path="/dashboard" element={< Dashboard/>}/>
           <Route path="/login" element={<Login />} />
           <Route path="/bookingcar" element={isseller ?<Main />:  <BookingCar/>}  />

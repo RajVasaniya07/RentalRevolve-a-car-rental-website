@@ -16,6 +16,8 @@ import UserBookingtwo from './pages/admindashboard/Revenue';
 import Dashboard from './pages/Dashboard';
 import { Navigate } from "react-router-dom";
 import Main from "./pages/Main/index";
+import Mainchart from "./pages/Main/graph"
+import Chart from "./pages/Main/dashboard"
 import Signup from "./pages/Singup/index";
 import Login from "./pages/Login/index";
 import EmailVerify from "./pages/EmailVerify/index";
@@ -50,7 +52,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}/>
           {/* {/* <Route path="/admindashboard" element={< UserBooking/>}/> */}
-          {/* <Route path="/admindashboardd" element={<Carchart/>}/> */}
+          {/* <Route path="/Mainchart" element={<Mainchart/>}/> */}
+          <Route path="/sellerdashboard" element={<Chart/>}/>
+
           <Route path="/dashboard" element={< Dashboard/>}/>
           <Route path="/login" element={<Login />} />
           <Route path="/bookingcar" element={isseller ?<Main />:  <BookingCar/>}  />

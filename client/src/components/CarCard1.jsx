@@ -52,19 +52,13 @@ const CarCard1 = ({ carData }) => {
                 <ion-icon name='hardware-chip-outline'></ion-icon>
                 <span className="card-item-text">{carData.carType}</span>
               </li>
-
-
-
-            
-          </ul>
+ </ul>
 
           <div className="card-price-wrapper">
             <p className="card-price">
               <strong>{carData.rentPerHour} rs.</strong> / Hour
             </p>
-            <button className="btn fav-btn" aria-label="Add to favourite list">
-              <ion-icon name="heart-outline"></ion-icon>
-            </button>
+            
             <Link to={`/editcar/${carData._id}`}>
                     <EditOutlined
                         className="mr-3"

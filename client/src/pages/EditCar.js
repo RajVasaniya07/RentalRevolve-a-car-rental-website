@@ -98,6 +98,9 @@ function EditCar() {
               >
                 <Input />
               </Form.Item>
+              <Form.Item name="email" label="Email" rules={[{ required: true }]} >
+  <Input  />
+</Form.Item>
               <Form.Item label="Current Image">
                 {car.image && (
                   <img src={car.image} alt="Current Car Image" style={{ maxWidth: '100px' }} />

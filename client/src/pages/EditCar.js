@@ -76,7 +76,7 @@ function EditCar() {
 
   return (
     <div>
-      {loading && <Spinner />}
+      {/* {loading && <Spinner />} */}
       <br />
       <br />
       <br />
@@ -89,7 +89,7 @@ function EditCar() {
               layout="vertical"
               onFinish={onFinish}
             >
-              <h3>Edit Car</h3>
+              <center><h2>Edit Car details</h2></center>
               <hr />
               <Form.Item
                 name="name"

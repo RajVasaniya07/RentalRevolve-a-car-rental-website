@@ -20,7 +20,9 @@ const AdminUser= require('./routes/adminUser');
 const Seller = require('./models/seller');
 const SellerUser =require('./routes/sellerUsers');
 const SellerAuth = require('./routes/sellerAuth');
-
+const EmployeeUser = require('./routes/employeeUser');
+const EmployeeAuth = require('./routes/employeeAuth');
+const Employeepass=require('./routes/passwordResetEmployee');
 const userpass=require('./routes/passwordResetUser');
 const sellerpass=require('./routes/passwordResetSeller');
 const adminpass=require('./routes/passwordResetAdmin');
@@ -58,7 +60,9 @@ app.use("/api/password-reset-admin", adminpass);
 app.use("/api/adminUser",AdminUser);
 app.use("/api/sellerUser",SellerUser);
 app.use("/api/sellerAuth",SellerAuth);
-
+app.use("/api/employeeUser",EmployeeUser);
+app.use("/api/employeeAuth",EmployeeAuth);
+app.use("/api/password-reset-employee", Employeepass);
 
 app.use('/api/cars/' , require('./routes/carsRoute'))
 // app.use('/api/users/' , require('./routes/usersRoute'))

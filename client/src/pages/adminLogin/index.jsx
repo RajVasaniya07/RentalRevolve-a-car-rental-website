@@ -20,7 +20,7 @@ const Login = () => {
 			localStorage.setItem("email", data.email);
 			localStorage.setItem("admin", res.data.admin);
 
-			window.location = "/Admin";
+			window.location = "/new";
 		} catch (error) {
 			if (
 				error.response &&

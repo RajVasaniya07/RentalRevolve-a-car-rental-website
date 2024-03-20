@@ -6,13 +6,15 @@ import { alertsReducer } from './reducers/alertsReducer';
 import { bookingsReducer } from './reducers/bookingsReducer';
 import { usersReducer } from './reducers/usersReducer';
 import { sellersReducer } from './reducers/sellersReducer';
+import { rentalReducer } from './reducers/rentalReducer';
 
 const rootReducer = combineReducers({
   carsReducer,
  alertsReducer,
  bookingsReducer,
  usersReducer,
- sellersReducer
+ sellersReducer,
+ rentalReducer,
  
 
 });

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllBookings } from "../../redux/actions/bookingActions";
 import moment from "moment";
 import Chart from 'chart.js/auto';
+import { saveAs } from 'file-saver';
 
 function UserBookings() {
   const dispatch = useDispatch();
@@ -76,8 +77,8 @@ function UserBookings() {
     return data;
   };
 
- // Function to draw or update the chart
-const drawOrUpdateChart = (canvasId, data) => {
+  // Function to draw or update the chart
+  const drawOrUpdateChart = (canvasId, data) => {
     const ctx = document.getElementById(canvasId).getContext('2d');
   
     // Check if a chart instance already exists
@@ -141,17 +142,53 @@ const drawOrUpdateChart = (canvasId, data) => {
     setSelectedOption(e.target.value);
   };
 
+  // Function to generate CSV content for all bookings
+  const generateCSVContentForAllBookings = () => {
+    if (!bookings || bookings.length === 0) {
+      return '';
+    }
+
+    // Generate CSV content
+    let csvContent = '';
+    const headers = Object.keys(bookings[0]);
+    csvContent += headers.join(',') + '\n';
+    bookings.forEach((booking) => {
+      const row = headers.map((header) => booking[header]);
+      csvContent += row.join(',') + '\n';
+    });
+    return csvContent;
+  };
+
+  // Function to initiate download of CSV file
+  const handleDownloadClick = () => {
+    const csvContent = generateCSVContentForAllBookings();
+    if (csvContent) {
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+      saveAs(blob, 'bookings_data.csv');
+    } else {
+      console.error('No data to download');
+    }
+  };
+
   return (
-    <div style={{ width: '60%', margin: 'auto' }}>
-      <h2>User Bookings</h2>
-      <select value={selectedOption} onChange={handleSelectChange}>
+    <div style={{ width: '95%', margin: 'auto' }}>
+  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '5px' }}>
+    <div>
+      <h2 style={{ marginRight: '10px' }}>User Bookings</h2>
+      <select value={selectedOption} onChange={handleSelectChange} style={{ marginRight: '10px' }}>
         <option value="today">Today</option>
         <option value="currentWeek">Current Week</option>
         <option value="currentMonth">Current Month</option>
         <option value="currentYear">Current Year</option>
       </select>
-      <canvas id="bookingChart" width="15000" height="10000"></canvas>
     </div>
+    <button onClick={handleDownloadClick}>Download CSV</button>
+  </div>
+  <div style={{ position: 'relative', width: '100%', height: '390px' }}>
+    <canvas id="bookingChart" style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%' }}></canvas>
+  </div>
+</div>
+
   );
 }
 

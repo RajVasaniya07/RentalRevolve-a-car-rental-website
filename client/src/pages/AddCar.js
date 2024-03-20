@@ -163,14 +163,14 @@ for (let i = 0; i < urls.length; i++) {
 
   return (
     <>
-      {loading && <Spinner />}
+      {/* {loading && <Spinner />} */}
       <br />
       <br />
       <br />
       <Row justify="center mt-5">
         <Col lg={12} sm={24} xs={24} className="p-2">
           <Form className="bs1 p-2" layout="vertical" onFinish={onFinish} ref={formRef}>
-            <h3>Add New Car</h3>
+            <center><h2>Add New Car</h2></center>
             <hr />
             <Form.Item name="name" label="Car name" rules={[{ required: true }]} >
               <Input />

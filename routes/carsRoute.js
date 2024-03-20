@@ -82,6 +82,26 @@ router.post('/storeRenterEmails', async (req, res) => {
   }
 });
 
+router.post("/checkavailability", async (req, res) => {
+  try {
+    console.log("click2");
+    var result = await Car.updateOne(
+      { _id: req.body._id },
+      { $set: { availability: req.body.availability } } // Assuming 'availability' is a field in the Car model indicating availability
+    );
+    console.log(req.body.availability);
+    if(result){
+      console.log(result);
+
+    }
+    // Sending email to notify about availability status change
+
+    // const car = await Car.findById(req.body._id);
+    res.status(100); // Placeholder status
+  } catch (error) {
+    return res.status(400).json(error);
+  }
+});
 
 
 

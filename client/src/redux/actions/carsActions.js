@@ -88,3 +88,17 @@ export const deleteCar=(reqObj)=>async dispatch=>{
     
 
 }
+
+export const CheckAvailability = (reqObj) => async (dispatch) => {
+  console.log("click1");
+  dispatch({ type: 'LOADING', payload: true });
+
+  try {
+    const response = await axios.post('/api/cars/checkavailability', reqObj); // Assuming '/api/cars/checkavailability' is the correct endpoint for checking availability
+    dispatch({ type: 'GET_ALL_CARS', payload: response.data }); // Assuming 'GET_ALL_CARS' is the action type for updating car availability
+    dispatch({ type: 'LOADING', payload: false });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: 'LOADING', payload: false });
+  }
+};

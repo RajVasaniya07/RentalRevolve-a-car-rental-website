@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllCars } from '../../redux/actions/carsActions';
 import moment from 'moment';
 import Chart from 'chart.js/auto';
+import { saveAs } from 'file-saver';
 
 function CarData() {
   const dispatch = useDispatch();
@@ -82,9 +83,7 @@ function CarData() {
   const drawOrUpdateChart = (canvasId, data) => {
     const ctx = document.getElementById(canvasId).getContext('2d');
 
-    // Check if a chart instance already exists
     if (chartInstance) {
-      // If a chart instance exists, update its data and options
       chartInstance.data.labels = Object.keys(data);
       chartInstance.data.datasets[0].data = Object.values(data);
       chartInstance.options.scales.x.title.text =
@@ -95,9 +94,8 @@ function CarData() {
           : selectedOption === 'currentMonth'
           ? 'Day (Current Month)'
           : 'Month (Current Year)';
-      chartInstance.update(); // Update the chart
+      chartInstance.update();
     } else {
-      // If no chart instance exists, create a new one
       const newChartInstance = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -144,7 +142,6 @@ function CarData() {
         },
       });
 
-      // Set the new chart instance
       setChartInstance(newChartInstance);
     }
   };
@@ -160,18 +157,62 @@ function CarData() {
     setSelectedOption(e.target.value);
   };
 
+  // Function to generate CSV content for all objects
+ // Function to generate CSV content for all objects
+const generateCSVContentForAllObjects = () => {
+  if (!cars || cars.length === 0) {
+    return '';
+  }
+
+  // Attributes to exclude
+  const excludedAttributes = ['image', 'images']; 
+
+  // Filter out the excluded attributes
+  const headers = Object.keys(cars[0]).filter(header => !excludedAttributes.includes(header));
+
+  // Generate CSV content excluding the excluded attributes
+  let csvContent = headers.join(',') + '\n';
+  cars.forEach((car) => {
+    const row = headers.map(header => car[header]);
+    csvContent += row.join(',') + '\n';
+  });
+  return csvContent;
+};
+
+  // Function to initiate download of CSV file
+  const handleDownloadClick = () => {
+    const csvContent = generateCSVContentForAllObjects();
+    if (csvContent) {
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+      saveAs(blob, 'cars_data.csv');
+    } else {
+      console.error('No data to download');
+    }
+  };
+
   return (
-    <div style={{ width: '60%', margin: 'auto' }}>
-      <h2>Cars Added</h2>
-      <select value={selectedOption} onChange={handleSelectChange}>
-        <option value="today">Today</option>
-        <option value="currentWeek">Current Week</option>
-        <option value="currentMonth">Current Month</option>
-        <option value="currentYear">Current Year</option>
-      </select>
-      <canvas id="carChart" width="15000" height="10000"></canvas>
-    </div>
+    
+      <div style={{ width: '95%', margin: 'auto' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '5px' }}>
+          <div>
+            <h2 style={{ marginRight: '10px' }}>Cars Added</h2>
+            <select value={selectedOption} onChange={handleSelectChange} style={{ marginRight: '10px' }}>
+              <option value="today">Today</option>
+              <option value="currentWeek">Current Week</option>
+              <option value="currentMonth">Current Month</option>
+              <option value="currentYear">Current Year</option>
+            </select>
+          </div>
+          <button onClick={handleDownloadClick}>Download CSV</button>
+        </div>
+        <div style={{ position: 'relative', width: '100%', height: '390px' }}>
+          <canvas id="carChart" style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%' }}></canvas>
+        </div>
+      </div>
+    
+    
   );
+  
 }
 
 export default CarData;

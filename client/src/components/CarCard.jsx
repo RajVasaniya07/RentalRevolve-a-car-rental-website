@@ -50,10 +50,13 @@ const CarCard = ({ carData }) => {
             <p className="card-price">
               <strong>{carData.rentPerHour} rs.</strong> / Hour
             </p>
+            {carData.availability?
+              <button className="btn" disabled={false}>
+              <Link to={`/booking/${carData._id}`} >Book Now</Link>
+              </button>:<p style={{ color: 'red' }}>Not Available</p>
+            }
             
-            <button className="btn">
-              <Link to={`/booking/${carData._id}`}>Book Now</Link>
-              </button>
+            
 
             {/* <button className="btn1 mr-2"><Link to={/booking/${car._id}}>Book Now</Link></button> */}
           </div>

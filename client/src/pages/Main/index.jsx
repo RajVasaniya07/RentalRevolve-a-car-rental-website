@@ -25,7 +25,7 @@ const Main = () => {
   };
   
   const onclick1 = () => {
-    window.location ="/userbookings";
+    window.location ="/sellerdashboard";
   };
   
   
@@ -64,6 +64,10 @@ const Main = () => {
                 
               <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick}>
                   <span id="aria-label-txt">Home</span>
+                </button>
+
+                <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick1}>
+                  <span id="aria-label-txt">charts</span>
                 </button>
 
                 <button className="btn" aria-labelledby="aria-label-txt" onClick={handleLogout2}>

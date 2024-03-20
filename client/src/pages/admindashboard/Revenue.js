@@ -83,7 +83,7 @@ function Revenue() {
   }, [bookings, chartInstance]);
 
   return (
-    <div style={{ width: '40%', margin: 'auto' }}>
+    <div style={{ width: '90%', margin: 'auto' }}>
       <center>Revenue</center>
       <canvas id="revenueChart" width="100" height="50"></canvas>
     </div>

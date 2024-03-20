@@ -29,6 +29,7 @@ const RevenueGraph = () => {
       return false;
     });
 
+    console.log(filteredBookings);
     const data = processDataForChart(filteredBookings);
 
     drawOrUpdateChart('revenueChart', data);

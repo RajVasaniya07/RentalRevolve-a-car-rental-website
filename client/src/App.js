@@ -129,7 +129,10 @@ function App() {
             path="/forgot-password-employee"
             element={<ForgotPasswordemp />}
           />
-          
+           <Route
+            path="/empdash"
+            element={<EmpDash />}
+          />
           <Route
             path="/submitdata"
             element={<Submitdata/>}

@@ -5,6 +5,7 @@ import { getAllBookings } from "../redux/actions/bookingActions";
 import { Col, Row } from "antd";
 import Spinner from '../components/Spinner';
 import moment from "moment";
+import  Footer  from "../../src/components/Footer";
 
 function UserBookings() {
   const dispatch = useDispatch();
@@ -42,9 +43,54 @@ function UserBookings() {
 
   return (
     <>
-      <header className="header" data-header>
-        {/* Header content */}
-      </header>
+     <header className="header" data-header>
+            <div className="container">
+              <div className="overlay" data-overlay />
+              <h1 className="h2" style={{fontSize:"35px",marginTop:"10px",color:"#1A9DF4"}}>RentalRevolve</h1>
+
+              <a href="#" className="logo">
+              </a>
+              <nav className="navbar" data-navbar>
+                <ul className="navbar-list">
+                  
+                </ul>
+              </nav>
+              <div className="header-actions">
+                
+              <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick}>
+                  <span id="aria-label-txt">Home</span>
+                </button>
+
+                <button className="btn" aria-labelledby="aria-label-txt" onClick={handleLogout1}>
+                  <span id="aria-label-txt">			{localStorage.getItem('email') ? 'Logout' : 'Login'}
+</span>
+                </button>
+
+
+              <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick1} >
+                  <span id="aria-label-txt">Previous Bookings</span>
+                </button>
+
+              
+
+                <button className="btn" aria-labelledby="aria-label-txt" href="/BookingCar" onClick={handleLogout}>
+                  <span id="aria-label-txt">Explore cars</span>
+                </button>
+                <button className="btn user-btn" aria-label="Profile">
+                <ion-icon name="person-outline" />
+                </button>
+
+                <button className="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
+                  <span className="one" />
+                  <span className="two" />
+                  <span className="three" />
+                </button>
+              </div>
+            </div>
+          </header>
+          <br></br>
+          <br></br>
+          <br></br>
       {/* {loading && (<Spinner />)} */}
       <h3 className="text-center mt-2">My Bookings</h3>
       <br></br>
@@ -82,6 +128,9 @@ function UserBookings() {
           })}
         </Col>
       </Row>
+      <br></br>
+      <Footer/>
+      
     </>
   );
 }

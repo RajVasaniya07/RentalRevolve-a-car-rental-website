@@ -50,7 +50,7 @@ function UsersData() {
   };
 
   return (
-    <div style={{ width: '90%', margin: 'auto' }}>
+    <div style={{ width: '80%', margin: 'auto' }}>
       <center>User and Seller Distribution</center>
       <canvas id="distributionChart" width="100" height="50"></canvas>
     </div>

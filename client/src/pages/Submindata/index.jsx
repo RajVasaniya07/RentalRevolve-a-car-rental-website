@@ -17,20 +17,62 @@ const RentalForm = () => {
   const [email, setEmail] = useState("");
   const [documentVerified, setDocumentVerified] = useState(false);
   const [carId, setCarId] = useState(""); // New state for Car ID
+  const [bookingId,setBookingId]=useState("");
   const [dropTimeValue, setDropTimeValue] = useState(0);
-
+  const params = useParams();
   const dispatch = useDispatch();
   const { id } = useParams();
   const { rental } = useSelector((state) => state.rentalReducer);
-  // const { bookings } = useSelector((state) => state.bookingsReducer);
+  const { bookings } = useSelector((state) => state.bookingsReducer);
+  // Function to extract date from datetime string
+
+  function extractDate(timestamp) {
+    const date = new Date(timestamp);
+    return date.toISOString().split('T')[0];
+  }
+
+// const currentBooking = bookings.filter((booking, index) => 
+//   booking.car && 
+//   booking.car._id === carId &&
+//   booking.bookedTimeSlots && 
+//   extractDate(booking.bookedTimeSlots.from) === extractDate(pickupTime)
+// );
+const [currentBooking,setCurrentBooking] = useState("");
+
+useEffect(()=>{
+  const pickupDate = pickupTime.split('T')[0];
+  const currentBooking = bookings.filter((booking, index) => 
+  booking.car && 
+  booking.car._id === carId &&
+  booking.bookedTimeSlots && 
+  extractDate(booking.bookedTimeSlots.from) === pickupDate
+  );
+  // console.log(extractDate(bookings[15].bookedTimeSlots.from),pickupDate)
+setCurrentBooking(currentBooking)
+},[pickupTime])
+
+
+// Extract date portion from pickupTime
+
+
+// Filter bookings based on conditions
+
+
+
+
+  
+  // console.log(4444,currentBooking);  
+  // console.log(4444,bookings);
   // const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllRental());
-    // dispatch(getAllBookings());
-    // console.log(bookings)
+    dispatch(getAllBookings());
+
 
   }, []);
   const rent1 = rental.find((rent) => rent._id === id);
+
+
 
   useEffect(() => {
     if (rent1) {
@@ -43,9 +85,12 @@ const RentalForm = () => {
       setSuggestionComplaint(rent1.suggestionComplaint);
     }
   }, [rent1]);
+  useEffect(() => {
+    dispatch(getAllBookings());
+  }, []);
+  
 
   const change = () => {
-    window.location = "/employeeDash";
   };
   console.log(rent1);
 
@@ -82,6 +127,7 @@ const RentalForm = () => {
       documentVerified,
       status,
       carId,
+      bookingId,
     };
 
     // Log the rentalData to the console
@@ -94,31 +140,21 @@ const RentalForm = () => {
       console.log("11");
       dispatch(submitRentalForm(rentalData));
     }
+    
+    window.location = "/employeeDash";
     // Dispatch the action with the rental data
 
     // Make an asynchronous call
     try {
-      // const response = await axios.post(
-      //   "/api/rentals/check-car-and-send-email",
-      //   {
-      //     carId,
-      //     renterName,
-      //     pickupTime,
-      //     dropTime,
-      //     status,
-      //     email,
-      //     // Add other form fields here
-      //   }
-      // );
-      // console.log(response.data.message);
-      // After successfully updating the data, call the endpoint to delete the pending entry
-      // const deleteResponse = await axios.delete(/api/rentals/delete-pending/${id});
-      // console.log(deleteResponse.data.message);
+     
     } catch (error) {
       console.error("Error updating or deleting pending entry:", error);
     }
   };
   const calculateDropTimeValue = (pickupTime, dropTime) => {
+    const book1 = bookings.find((rent) => rent._id === rent1.bookingId);
+    const date = book1.bookedTimeSlots.to
+    pickupTime=date;
     // Convert pickup and drop time strings to Date objects
     const pickupDateTime = new Date(pickupTime);
     const dropDateTime = new Date(dropTime);
@@ -127,8 +163,10 @@ const RentalForm = () => {
     const timeDifferenceMs = dropDateTime - pickupDateTime;
 
     const timeDifferenceHours = timeDifferenceMs / (1000 * 60 * 60);
-    const fineAmount = timeDifferenceHours * 350;
+    const fineAmount = parseInt(timeDifferenceHours * 350);
 
+
+    // fineAmount = fineAmount;
     // Calculate the drop time value
     
     // Update the dropTimeValue state
@@ -139,6 +177,8 @@ const RentalForm = () => {
     <div className="rental-form-container">
       <center>
         <h1>Rental Form</h1>
+  {currentBooking && console.log(4444,currentBooking)}
+        
       </center>
       <br></br>
 
@@ -159,6 +199,16 @@ const RentalForm = () => {
             type="text"
             value={carId}
             onChange={(e) => setCarId(e.target.value)}
+            style={{ border: "solid black 1px" }}
+            required
+          />
+        </label>
+        <label>
+          Booking ID:
+          <input
+            type="text"
+            value={bookingId || params.id}
+            onChange={(e) => setBookingId(e.target.value)}
             style={{ border: "solid black 1px" }}
             required
           />
@@ -193,7 +243,7 @@ const RentalForm = () => {
              onChange={(e) => {
                const newDropTime = e.target.value;
                setDropTime(newDropTime);
-               calculateDropTimeValue(pickupTime, newDropTime);
+               calculateDropTimeValue({pickupTime}, newDropTime);
              }}
              style={{ border: "solid black 1px" }}
              required={status === "carReturned"}
@@ -229,7 +279,7 @@ const RentalForm = () => {
         </label>
 
         <label>
-        Drop Time Value:
+        Fine Value:
         {status !== "pending" ? (
           <input
             type="text"

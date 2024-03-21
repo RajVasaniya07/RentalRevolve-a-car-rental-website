@@ -60,7 +60,7 @@ const Login = () => {
 							<p style={{ padding: "0 15px" }}>Forgot Password ?</p>
 						</Link>
 						{error && <div className={styles.error_msg}>{error}</div>}
-						<button type="submit" className={styles.green_btn}>
+						<button type="submit" className={styles.green_btn} style={{background:"#092635"}}>
 							Login
 						</button>
 					</form>

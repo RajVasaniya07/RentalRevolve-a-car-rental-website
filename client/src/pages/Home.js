@@ -1,5 +1,4 @@
 import "./test.css"
-
 import React , {useState,useEffect} from 'react'
 import { useSelector , useDispatch } from 'react-redux'
 import imgb1 from "../images/blog-1.jpg"
@@ -7,7 +6,6 @@ import imgb2 from "../images/blog-2.jpg"
 import imgb3 from "../images/blog-3.jpg"
 import imgb4 from "../images/blog-4.jpg"
 import imgb5 from "../images/blog-5.jpg"
-import logo from "../images/logo.svg"
 import { Row, Col, Divider, DatePicker, Checkbox, Modal } from "antd";
 import CarCard from '../components/CarCard'; 
 import DefaultLayout from '../components/DefaultLayout'
@@ -58,14 +56,25 @@ function NewComponent() {
 	  const onclick1 = () => {
 		window.location ="/userbookings";
 	  };
+
+    const onclick2 = () => {
+      window.location ="/BookingCar";
+      };
+
 	  
 	  
 	  const handleLogout1 = () => {
 		if (localStorage.getItem('email')) {
+      localStorage.removeItem('admin');
+      localStorage.removeItem('id');
+
 		  localStorage.removeItem('email');
 		  localStorage.removeItem('token');
 		  localStorage.removeItem('seller');
 		  localStorage.removeItem('customer');
+      localStorage.removeItem('employee');
+
+
 		  window.location = "/";
 		}
 		else{
@@ -101,11 +110,14 @@ function NewComponent() {
           <header className="header" data-header>
             <div className="container">
               <div className="overlay" data-overlay />
+              <h1 className="h2" style={{fontSize:"35px",marginTop:"10px",color:"#1A9DF4"}}>RentalRevolve</h1>
+
+              {/* <h1>RentalRevolve</h1> */}
+
               <a href="#" className="logo">
               </a>
               <nav className="navbar" data-navbar>
                 <ul className="navbar-list">
-                  
                 </ul>
               </nav>
               <div className="header-actions">
@@ -121,7 +133,7 @@ function NewComponent() {
 
 
               <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick1} >
-                  <span id="aria-label-txt">User Bookings</span>
+                  <span id="aria-label-txt">Previous Bookings</span>
                 </button>
 
               
@@ -181,7 +193,7 @@ function NewComponent() {
                 <div className="container">
                   <div className="title-wrapper">
                     <h2 className="h2 section-title">Featured cars</h2>
-                    <a href="#" className="featured-car-link" onClick={onclick1}>
+                    <a  className="featured-car-link" onClick={onclick2}>
                       <span>View more</span>
                       <ion-icon name="arrow-forward-outline" />
                     </a>

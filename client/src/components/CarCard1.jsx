@@ -80,10 +80,21 @@ const CarCard1 = ({ carData }) => {
               />
             </Popconfirm>
 
-            <button onClick={(e) => {
-              dispatch(CheckAvailability({ _id: carData._id, availability: !flag }))
-              setFlag(!flag);
-            }}  style={{ color: flag ? 'green' : 'red' }}>{flag === true ? "Available" : "Not Available"}</button>
+            <button 
+  onClick={(e) => {
+    dispatch(CheckAvailability({ _id: carData._id, availability: !flag }))
+    setFlag(!flag);
+  }}  
+  style={{ 
+    color: flag ? 'green' : 'red',
+    backgroundColor: 'transparent', // Setting the background color to transparent
+    border: 'none', // Remove the border if needed
+    cursor: 'pointer' // Ensure cursor changes to pointer on hover
+  }}
+>
+  {flag === true ? "Available" : "Not Available"}
+</button>
+
 
             {/* <button className="btn1 mr-2"><Link to={/booking/${car._id}}>Book Now</Link></button> */}
           </div>

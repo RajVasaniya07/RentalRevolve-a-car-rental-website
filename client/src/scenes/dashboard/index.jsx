@@ -14,6 +14,7 @@ import Cardata from "../../pages/admindashboard/Cardata"
 import Revenue from "../../pages/admindashboard/Revenue"
 import UserBookings from "../../pages/admindashboard/UserBookings"
 import Usersdata from "../../pages/admindashboard/Usersdata"
+import  Footer  from "../../components/Footer";
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -56,14 +57,61 @@ const Dashboard = () => {
 	};
 
   return (
+    <div>
     <Box m="20px" >
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme1}>
           <div>
             <CssBaseline />
+            <header className="header" data-header>
+            <div className="container">
+              <div className="overlay" data-overlay />
+              <h1 className="h2" style={{fontSize:"35px",marginTop:"10px",color:"#1A9DF4"}}>RentalRevolve</h1>
+
+              <a href="#" className="logo">
+              </a>
+              <nav className="navbar" data-navbar>
+                <ul className="navbar-list">
+                  
+                </ul>
+              </nav>
+              <div className="header-actions">
+
+              <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick2}>
+                  <span id="aria-label-txt">Today's bookings</span>
+                </button>
+                
+              <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick}>
+                  <span id="aria-label-txt">Home</span>
+                </button>
+
+                <button className="btn" aria-labelledby="aria-label-txt" onClick={handleLogout2}>
+                  <span id="aria-label-txt">Add a new car</span>
+                </button>
+
+
+                <button className="btn" aria-labelledby="aria-label-txt" onClick={handleLogout1}>
+                  <span id="aria-label-txt">			{localStorage.getItem('email') ? 'Logout' : 'Login'}
+</span>
+                </button>
+
+
+             
+                <button className="btn user-btn" aria-label="Profile">
+                <ion-icon name="person-outline" />
+                </button>
+
+                <button className="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
+                  <span className="one" />
+                  <span className="two" />
+                  <span className="three" />
+                </button>
+              </div>
+            </div>
+          </header>
             
             {/* <Topbar setIsSidebar={setIsSidebar} /> */}
-            <main className="content" style={{ display: "flex" }}>
+            <main className="content" style={{ display: "flex",marginTop:"90px"}}>
               {isSidebar && <Sidebar isSidebar={isSidebar} />}
               <Box flexGrow={1}>
                 <Box
@@ -87,104 +135,13 @@ const Dashboard = () => {
                   gridAutoRows="140px"
                   gap="20px"
                 >
-                  {/* ROW 1 */}
-                  {/* <Box
                   
-                    gridColumn="span 3"
-                    backgroundColor={colors.primary[400]}
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                  >
-                    <StatBox
-                    
-                      title="12,361"
-                      subtitle="Emails Sent"
-                      // progress="0.75"
-                      // increase="+14%"
-                      icon={
-                        <MonetizationOnIcon
-                        
-                          sx={{
-                            color: colors.greenAccent[600],
-                            fontSize: "26px",
-                          }}
-                        />
-                      }
-                    />
-                  </Box>
-                  <Box
-                    gridColumn="span 3"
-                    backgroundColor={colors.primary[400]}
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                  >
-                    <StatBox
-                      title="431,225"
-                      subtitle="Sales Obtained"
-                      // progress="0.50"
-                      // increase="+21%"
-                      icon={
-                        <PointOfSaleIcon
-                          sx={{
-                            color: colors.greenAccent[600],
-                            fontSize: "26px",
-                          }}
-                        />
-                      }
-                    />
-                  </Box>
-                  <Box
-                    gridColumn="span 3"
-                    backgroundColor={colors.primary[400]}
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                  >
-                    <StatBox
-                      title="32,441"
-                      subtitle="New Clients"
-                      // progress="0.30"
-                      // increase="+5%"
-                      icon={
-                        <PersonAddIcon
-                          sx={{
-                            color: colors.greenAccent[600],
-                            fontSize: "26px",
-                          }}
-                        />
-                      }
-                    />
-                  </Box>
-                  <Box
-                    gridColumn="span 3"
-                    backgroundColor={colors.primary[400]}
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                  >
-                    <StatBox
-                      title="12,361"
-                      subtitle="Car Bookings"
-                      // progress="0.75"
-                      // increase="+14%"
-                      icon={
-                        <DirectionsCarIcon
-                          sx={{
-                            color: colors.greenAccent[600],
-                            fontSize: "26px",
-                          }}
-                        />
-                      }
-                    />
-                  </Box> */}
 
                   {/* ROW 2 */}
                   <Box
                     gridColumn="span 7"
                     gridRow="span 3"
-                    backgroundColor={colors.primary[400]}
+                    backgroundColor='#EDF1F7'
                   >
                     <Box
                       mt="25px"
@@ -201,7 +158,7 @@ const Dashboard = () => {
                   <Box
                     gridColumn="span 5"
                     gridRow="span 3"
-                    backgroundColor={colors.primary[400]}
+                    backgroundColor='#EDF1F7'
                     // overflow="auto"
                   >
                      <Box
@@ -222,7 +179,7 @@ const Dashboard = () => {
                   <Box
                     gridColumn="span 7"
                     gridRow="span 3"
-                    backgroundColor={colors.primary[400]}
+                    backgroundColor='#EDF1F7'
                   >
                     <Box
                       mt="25px"
@@ -241,7 +198,7 @@ const Dashboard = () => {
                   <Box
                     gridColumn="span 5"
                     gridRow="span 3"
-                    backgroundColor={colors.primary[400]}
+                    backgroundColor='#EDF1F7'
                     // overflow="auto"
                   >
                      <Box
@@ -264,6 +221,8 @@ const Dashboard = () => {
         </ThemeProvider>
       </ColorModeContext.Provider>
     </Box>
+    <Footer/>
+    </div>
   );
 };
 

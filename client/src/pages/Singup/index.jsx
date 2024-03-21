@@ -17,7 +17,6 @@ const Signup = () => {
 		setData({ ...data, [input.name]: input.value });
 	};
 
-	// const user=localStorage.setItem("")
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -42,7 +41,7 @@ const Signup = () => {
 				<div className={styles.left}>
 					<h1>Welcome Back</h1>
 					<Link to="/login">
-						<button type="button" className={styles.white_btn}>
+						<button type="button" className={styles.white_btn}style={{background:"white",color:"#092635"}}>
 							Sign in
 						</button>
 					</Link>
@@ -88,7 +87,7 @@ const Signup = () => {
 						/>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						{msg && <div className={styles.success_msg}>{msg}</div>}
-						<button type="submit" className={styles.green_btn}>
+						<button type="submit" className={styles.green_btn}style={{background:"#092635"}}>
 							Sign Up
 						</button>
 					</form>

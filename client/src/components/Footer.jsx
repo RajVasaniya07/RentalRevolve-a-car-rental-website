@@ -1,113 +1,10 @@
-import styles from "../red/styles.module.css";
-import { useState, useEffect } from "react";
-import { useSelector , useDispatch } from 'react-redux'
-import CarCard1 from "../../components/CarCard1";
-import { getAllCars } from "../../redux/actions/carsActions"
+// Footer.js
 
-const Main = () => {
-	const handleLogout = () => {
-		localStorage.removeItem("token");
-		localStorage.removeItem("email");
-		localStorage.removeItem("seller");
+import React from "react";
 
-		window.location ="/";
-	};
-
-	const {cars} = useSelector(state=>state.carsReducer)
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-      dispatch(getAllCars())
-  }, [])
-
-  const onclick = () => {
-    window.location ="/";
-  };
-  
-  const onclick1 = () => {
-    window.location ="/sellerdashboard";
-  };
-  
-  
-  const handleLogout1 = () => {
-    if (localStorage.getItem('email')) {
-      localStorage.removeItem('email');
-      localStorage.removeItem('token');
-      localStorage.removeItem('seller');
-      localStorage.removeItem('customer');
-      window.location = "/";
-    }
-    else{
-      window.location = "/afterHome";
-    }
-    };
-  
-  const handleLogout2 = () => {
-		window.location ="/addCar";
-	};
-  
-  const email = localStorage.getItem("email");
-
-	return (
-		<div className={styles.main_container}>
-			 <header className="header" data-header>
-            <div className="container">
-              <div className="overlay" data-overlay />
-
-
-              <h1 className="h2" style={{fontSize:"35px",marginTop:"10px",color:"#1A9DF4"}}>RentalRevolve</h1>
-
-
-
-              <a href="#" className="logo">
-              </a>
-              <nav className="navbar" data-navbar>
-                <ul className="navbar-list">
-                  
-                </ul>
-              </nav>
-              <div className="header-actions">
-                
-              <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick}>
-                  <span id="aria-label-txt">Home</span>
-                </button>
-
-                <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick1}>
-                  <span id="aria-label-txt">charts</span>
-                </button>
-
-                <button className="btn" aria-labelledby="aria-label-txt" onClick={handleLogout2}>
-                  <span id="aria-label-txt">Add a new car</span>
-                </button>
-
-
-                <button className="btn" aria-labelledby="aria-label-txt" onClick={handleLogout1}>
-                  <span id="aria-label-txt">			{localStorage.getItem('email') ? 'Logout' : 'Login'}
-</span>
-                </button>
-
-
-             
-                <button className="btn user-btn" aria-label="Profile">
-                <ion-icon name="person-outline" />
-                </button>
-
-                <button className="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
-                  <span className="one" />
-                  <span className="two" />
-                  <span className="three" />
-                </button>
-              </div>
-            </div>
-
-          </header>
-			<ul className='featured-car-list' style={{margin:'100px'}}>
-      {cars.filter(car=>car.email===email).map((car) => (
-        <CarCard1 key={car._id} carData={car} />
-      ))}
-    </ul>
-    <footer className="footer"  style={{position:"absolute",left:"0",right:"0",paddingbottom:"60px"
-}}>
+const Footer = () => {
+  return (
+    <footer className="footer">
             <div className="container">
               <div className="footer-top">
                 <div className="footer-brand">
@@ -222,9 +119,7 @@ const Main = () => {
                 </p>
               </div>
             </div>
-          </footer>
-		</div>
-	);
+          </footer>  );
 };
 
-export default Main;
+export default Footer;

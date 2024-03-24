@@ -77,17 +77,13 @@ const Dashboard = () => {
               </nav>
               <div className="header-actions">
 
-              <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick2}>
-                  <span id="aria-label-txt">Today's bookings</span>
-                </button>
+              
                 
-              <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick}>
+              {/* <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick}>
                   <span id="aria-label-txt">Home</span>
-                </button>
+                </button> */}
 
-                <button className="btn" aria-labelledby="aria-label-txt" onClick={handleLogout2}>
-                  <span id="aria-label-txt">Add a new car</span>
-                </button>
+                
 
 
                 <button className="btn" aria-labelledby="aria-label-txt" onClick={handleLogout1}>

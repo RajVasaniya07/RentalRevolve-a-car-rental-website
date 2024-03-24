@@ -41,7 +41,7 @@ const [selectedDate, setSelectedDate] = useState(todayDate);
   }, []);
 
   const handleLogout = () => {
-    window.location = "/BookingCar";
+    window.location = "/new";
   };
 
   const onclick = () => {
@@ -49,7 +49,7 @@ const [selectedDate, setSelectedDate] = useState(todayDate);
   };
 
   const onclick1 = () => {
-    window.location = "/employeeDash";
+    window.location = "/userbookings";
   };
 
   const handleLogout1 = () => {
@@ -71,26 +71,20 @@ const [selectedDate, setSelectedDate] = useState(todayDate);
     return current && current < minDate;
   };
   function filteredBookings(date) {
-    // Check if date is null
-    if (date === null) {
-      setSelectedDate(todayDate); // Set selected date to today's date
-      return; // Exit the function early
+    if (date) {
+        const formattedDate = date.format("MMM DD YYYY");
+        console.log(formattedDate);
+        setSelectedDate(formattedDate);
     }
-  
-    // Format the date only if it's not null
-    const formattedDate = date.format("MMM DD YYYY");
-    console.log(formattedDate);
-    setSelectedDate(formattedDate);
-  }
-  
+}
+
+
 
   return (
-    <>
+    <div>
       <header className="header" data-header>
         <div className="container">
           <div className="overlay" data-overlay />
-          <h1 className="h2" style={{fontSize:"35px",marginTop:"10px",color:"#1A9DF4"}}>RentalRevolve</h1>
-
           <a href="#" className="logo"></a>
           <nav className="navbar" data-navbar>
             <ul className="navbar-list"></ul>
@@ -115,22 +109,22 @@ const [selectedDate, setSelectedDate] = useState(todayDate);
               </span>
             </button>
 
-            <button
+            {/* <button
               className="btn"
               aria-labelledby="aria-label-txt"
               onClick={onclick1}
             >
-              <span id="aria-label-txt">Home</span>
-            </button>
+              <span id="aria-label-txt">Previous Bookings</span>
+            </button> */}
 
-            {/* <button
+            <button
               className="btn"
               aria-labelledby="aria-label-txt"
               href="/BookingCar"
               onClick={handleLogout}
             >
-              <span id="aria-label-txt">Explore cars</span>
-            </button> */}
+              <span id="aria-label-txt">Home</span>
+            </button>
             <button className="btn user-btn" aria-label="Profile">
               <ion-icon name="person-outline" />
             </button>
@@ -152,7 +146,7 @@ const [selectedDate, setSelectedDate] = useState(todayDate);
       
 
       {loading && <Spinner />}
-      <h3 className="text-center mt-2">Today's Bookings</h3>
+      <h3 className="text-center mt-2">My Bookings</h3>
       <br></br>
       <br></br>
 
@@ -164,7 +158,7 @@ const [selectedDate, setSelectedDate] = useState(todayDate);
         style={{ marginBottom: "16px" }}
       />
 
-      <h3 className="text-center mt-2">Today's Bookings</h3>
+      <h3 className="text-center mt-2">My Bookings</h3>
       {/* {users.map((user) => {
         return(<>{user.email}<br></br></>);
       })
@@ -214,10 +208,6 @@ const [selectedDate, setSelectedDate] = useState(todayDate);
                       Date of booking:{" "}
                       <b>{moment(booking.createdAt).format("MMM DD yyyy")}</b>
                     </p>
-                    <p>
-                      Booking Id: <b>{booking._id}</b>
-                    </p>
-
                   </Col>
   
                   <Col lg={6} sm={24} className="text-right">
@@ -238,9 +228,8 @@ const [selectedDate, setSelectedDate] = useState(todayDate);
           })}
         </Col>
       </Row>
-
       <br></br>
-      <footer className="footer"  style={{position:"absolute",left:"0",right:"0",marginBottom:"100px"
+      <footer className="footer"  style={{position:"absolute",left:"0",right:"0",paddingbottom:"60px"
 }}>
             <div className="container">
               <div className="footer-top">
@@ -357,7 +346,7 @@ const [selectedDate, setSelectedDate] = useState(todayDate);
               </div>
             </div>
           </footer>
-    </>
+    </div>
   );
 }
 

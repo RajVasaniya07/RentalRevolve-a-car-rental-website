@@ -131,6 +131,17 @@ const Sidebar = () => {
             >
               Pages
             </Typography>
+
+
+
+            <Item
+              title="Today's bookings"
+              to="/Dashboard"
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            
             <Item
               title="Cars"
               to="/admin"
@@ -140,28 +151,17 @@ const Sidebar = () => {
             />
 
             
-            <Item
-              title="Today's bookings"
-              to="/Dashboard"
-              icon={<PeopleOutlinedIcon />}
+           
+
+
+<Item
+              title="Add a new employee"
+              to="/EmployeeSignup"
+              icon={<PeopleOutlinedIcon  />}
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
-              title="Home"
-              to="/admin"
-              icon={<ContactsOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title={localStorage.getItem("email") ? "Logout" : "Login"}
-               to="/afterhome"
-              icon={<PersonOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
             
-            />
 
             
            

@@ -4,6 +4,7 @@ import DefaultLayout from '../components/DefaultLayout';
 import CarDetails from './CarDetails';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllCars } from '../redux/actions/carsActions';
+import Footer from '../components/Footer';
 
 function Booking(props) {
   const { carid } = useParams();
@@ -59,7 +60,7 @@ function Booking(props) {
     <><header className="header" data-header>
     <div className="container">
       <div className="overlay" data-overlay />
-      <h1>Booking</h1>
+      <h1 className="h2" style={{fontSize:"35px",marginTop:"10px",color:"#1A9DF4"}}>RentalRevolve</h1>
 
       <a href="#" className="logo">
       </a>
@@ -101,10 +102,13 @@ function Booking(props) {
       </div>
     </div>
   </header>
+  
       <br />
       <br />
       {/* <center><h1 style={{display:"inline"}}>Booking</h1></center> */}
       {car ? <CarDetails car={car} /> : <p>Car details not found</p>}
+
+      <Footer/>
     </>
   );
 }

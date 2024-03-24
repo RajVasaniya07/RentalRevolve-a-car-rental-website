@@ -74,7 +74,7 @@ const index = () => {
 
    
         <section class="text-gray-600 body-font overflow-hidden">
-      <div class="container px-5 py-24 mx-auto">
+      <div class="container px-5 py-24 mx-auto" color='#1A9DF4'>
         <div class="flex flex-col text-center w-full mb-20">
           <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Login as</h1>
           {/* <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-500">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical.</p> */}
@@ -107,7 +107,7 @@ const index = () => {
               </p>
               <br></br>
               <br></br>
-              <button class="flex items-center mt-auto text-white  border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded" style={{background:"#092635"}} onClick={handleSubmit1}>Login
+              <button class="flex items-center mt-auto text-white  border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded" style={{background:"#1A9DF4"}} onClick={handleSubmit1}>Login
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                   <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>
@@ -140,7 +140,7 @@ const index = () => {
                 </span>Remove your car
               </p>
               
-              <button class="flex items-center mt-auto text-white  border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded" style={{background:"#092635"}} onClick={handleSubmit3}>Login
+              <button class="flex items-center mt-auto text-white  border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded" style={{background:"#1A9DF4"}} onClick={handleSubmit3}>Login
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                   <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>
@@ -174,7 +174,7 @@ const index = () => {
                 </span>Remove your car
               </p>
               
-              <button class="flex items-center mt-auto text-white  border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded" style={{background:"#092635"}} onClick={handleSubmit4}>Login
+              <button class="flex items-center mt-auto text-white  border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded" style={{background:"#1A9DF4"}} onClick={handleSubmit4}>Login
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                   <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>
@@ -207,7 +207,7 @@ const index = () => {
                 </span>Edit details and remove cars
               </p>
               
-              <button class="flex items-center mt-auto text-white  border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded" style={{background:"#092635"}}  onClick={handleSubmit2}>Login
+              <button class="flex items-center mt-auto text-white  border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded" style={{background:"#1A9DF4"}}  onClick={handleSubmit2}>Login
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                   <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>

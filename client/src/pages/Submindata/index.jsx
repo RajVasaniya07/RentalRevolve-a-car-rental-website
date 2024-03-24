@@ -6,6 +6,7 @@ import { submitRentalForm } from "../../redux/actions/rentalActions";
 import { useParams } from "react-router-dom";
 import { getAllRental, editRental } from "../../redux/actions/rentalActions";
 import { getAllBookings } from "../../redux/actions/bookingActions";
+import { getAllCars } from "../../redux/actions/carsActions";
 const RentalForm = () => {
   const [renterName, setRenterName] = useState("");
   const [paymentId, setPaymentId] = useState("");
@@ -24,6 +25,8 @@ const RentalForm = () => {
   const { id } = useParams();
   const { rental } = useSelector((state) => state.rentalReducer);
   const { bookings } = useSelector((state) => state.bookingsReducer);
+  const { cars } = useSelector((state) => state.carsReducer);
+  const [sellerEmail,setSellerEmail] = useState('');
   // Function to extract date from datetime string
 
   function extractDate(timestamp) {
@@ -31,12 +34,17 @@ const RentalForm = () => {
     return date.toISOString().split('T')[0];
   }
 
-// const currentBooking = bookings.filter((booking, index) => 
-//   booking.car && 
-//   booking.car._id === carId &&
-//   booking.bookedTimeSlots && 
-//   extractDate(booking.bookedTimeSlots.from) === extractDate(pickupTime)
-// );
+
+  const car = cars.find(car => car._id === carId);
+
+  // useEffect(() => {
+  //   if (car) {
+  //     setSellerEmail(car.email);
+  //     // console.log(car);
+  //   } else {
+  //     console.log('Car not found');
+  //   }
+  // }, [car,carId]);
 const [currentBooking,setCurrentBooking] = useState("");
 
 useEffect(()=>{
@@ -47,9 +55,16 @@ useEffect(()=>{
   booking.bookedTimeSlots && 
   extractDate(booking.bookedTimeSlots.from) === pickupDate
   );
+  const car = cars.find(car => car._id === carId);
+  if (car) {
+    setSellerEmail(car.email);
+    console.log(sellerEmail);
+  } else {
+    console.log('Car not found');
+  }
   // console.log(extractDate(bookings[15].bookedTimeSlots.from),pickupDate)
 setCurrentBooking(currentBooking)
-},[pickupTime])
+},[pickupTime,car,carId])
 
 
 // Extract date portion from pickupTime
@@ -67,10 +82,12 @@ setCurrentBooking(currentBooking)
   useEffect(() => {
     dispatch(getAllRental());
     dispatch(getAllBookings());
+    dispatch(getAllCars())
 
 
   }, []);
   const rent1 = rental.find((rent) => rent._id === id);
+
 
 
 
@@ -122,12 +139,12 @@ setCurrentBooking(currentBooking)
       pickupTime,
       dropTime,
       suggestionComplaint,
-      totalAmount,
-      email,
+      // totalAmount,
+      email : sellerEmail,
       documentVerified,
       status,
       carId,
-      bookingId,
+      // bookingId,
     };
 
     // Log the rentalData to the console
@@ -140,7 +157,7 @@ setCurrentBooking(currentBooking)
       console.log("11");
       dispatch(submitRentalForm(rentalData));
     }
-    
+
     window.location = "/employeeDash";
     // Dispatch the action with the rental data
 
@@ -149,6 +166,27 @@ setCurrentBooking(currentBooking)
      
     } catch (error) {
       console.error("Error updating or deleting pending entry:", error);
+    }
+  };
+  const onclick = () => {
+    window.location = "/";
+  };
+
+  const onclick1 = () => {
+    window.location = "/employeeDash";
+  };
+
+  const handleLogout1 = () => {
+    if (localStorage.getItem("email")) {
+      localStorage.removeItem("email");
+      localStorage.removeItem("token");
+      localStorage.removeItem("seller");
+      localStorage.removeItem("customer");
+      localStorage.removeItem('employee');
+
+      window.location = "/";
+    } else {
+      window.location = "/afterHome";
     }
   };
   const calculateDropTimeValue = (pickupTime, dropTime) => {
@@ -173,10 +211,79 @@ setCurrentBooking(currentBooking)
     setDropTimeValue(fineAmount);
   };
 
-  return (
-    <div className="rental-form-container">
+  return (<div>
+<header className="header" data-header>
+    <div className="container">
+      <div className="overlay" data-overlay />
+      <h1 className="h2" style={{fontSize:"35px",marginTop:"10px",color:"#1A9DF4"}}>RentalRevolve</h1>
+
+      <a href="#" className="logo"></a>
+      <nav className="navbar" data-navbar>
+        <ul className="navbar-list"></ul>
+      </nav>
+      <div className="header-actions">
+        {/* <button
+          className="btn"
+          aria-labelledby="aria-label-txt"
+          onClick={onclick}
+        >
+          <span id="aria-label-txt">Home</span>
+        </button> */}
+
+        <button
+        color="#1A9DF4"
+          className="btn"
+          aria-labelledby="aria-label-txt"
+          onClick={handleLogout1}
+        >
+          <span id="aria-label-txt">
+            {" "}
+            {localStorage.getItem("email") ? "Logout" : "Login"}
+          </span>
+        </button>
+
+        <button
+          className="btn"
+          aria-labelledby="aria-label-txt"
+          onClick={onclick1}
+        >
+          <span id="aria-label-txt">Home</span>
+        </button>
+
+        {/* <button
+          className="btn"
+          aria-labelledby="aria-label-txt"
+          href="/BookingCar"
+          onClick={handleLogout}
+        >
+          <span id="aria-label-txt">Explore cars</span>
+        </button> */}
+        <button className="btn user-btn" aria-label="Profile">
+          <ion-icon name="person-outline" />
+        </button>
+
+        <button
+          className="nav-toggle-btn"
+          data-nav-toggle-btn
+          aria-label="Toggle Menu"
+        >
+          <span className="one" />
+          <span className="two" />
+          <span className="three" />
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <br></br>
+<br></br>
+<br></br>
+    <div className="rental-form-container"> 
+
+
+
       <center>
-        <h1>Rental Form</h1>
+        <h1>PickupTime & DropTime Form</h1>
   {currentBooking && console.log(4444,currentBooking)}
         
       </center>
@@ -345,6 +452,8 @@ setCurrentBooking(currentBooking)
         </button>
       </form>
       
+    </div>
+
     </div>
   );
 };

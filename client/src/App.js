@@ -13,7 +13,7 @@ import EditCar from "./pages/EditCar";
 import UserBookings from "./pages/UserBookings";
 import Carchart from "./pages/admindashboard/Usersdata";
 import UserBookingtwo from "./pages/admindashboard/Revenue";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "../src/pages/admindash/UserBookings";
 import { Navigate } from "react-router-dom";
 import Main from "./pages/Main/index";
 import Mainchart from "./pages/Main/graph";
@@ -44,7 +44,8 @@ import AfterHome from "../src/pages/afterHome/index";
 import SellerLogin from "../src/pages/SellerLogin/index";
 import SellerSingup from "../src/pages/SellerSingup/index";
 import Dashboard1 from "./scenes/dashboard";
-import Submitdata from "./pages/Submindata/index"
+import Submitdata from "./pages/Submindata/index";
+
 function App() {
   const isAuthenticatedUser = localStorage.getItem("email");
   const user = localStorage.getItem("email");
@@ -137,6 +138,7 @@ function App() {
             path="/submitdata"
             element={<Submitdata/>}
           />
+          <Route path="/Submitdata/:id" exact element={<Submitdata/>}  />
           <Route
             path="/password-reset-employee/:id/admin/:token"
             element={<PasswordReset3 />}

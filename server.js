@@ -32,7 +32,8 @@ const bookingsRoute=require('./routes/bookingsRoute')
 initialize();
 
 
-
+const rentalRoutes = require('./routes/rental');
+app.use('/api/rentals/', rentalRoutes);
 // middlewares
 app.use(express.json());
 app.use(cors());

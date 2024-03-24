@@ -7,6 +7,7 @@ import { Button, Col, Row } from 'antd'
 import {Link} from 'react-router-dom'
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import styles from "../pages/adminMain/styles.module.css"
+import Footer from '../components/Footer';
 
 
 
@@ -24,7 +25,7 @@ const AdminHome = () => {
   };
   
   const onclick = () => {
-    window.location ="/";
+    window.location ="/new";
   };
   
   const onclick1 = () => {
@@ -59,6 +60,8 @@ const AdminHome = () => {
     <header className="header" data-header>
             <div className="container">
               <div className="overlay" data-overlay />
+              <h1 className="h2" style={{fontSize:"35px",marginTop:"10px",color:"#1A9DF4"}}>RentalRevolve</h1>
+
               <a href="#" className="logo">
               </a>
               <nav className="navbar" data-navbar>
@@ -72,9 +75,9 @@ const AdminHome = () => {
                   <span id="aria-label-txt">Home</span>
                 </button>
 
-                <button className="btn" aria-labelledby="aria-label-txt" onClick={handleLogout2}>
+                {/* <button className="btn" aria-labelledby="aria-label-txt" onClick={handleLogout2}>
                   <span id="aria-label-txt">Add a new car</span>
-                </button>
+                </button> */}
 
 
                 <button className="btn" aria-labelledby="aria-label-txt" onClick={handleLogout1}>
@@ -101,6 +104,8 @@ const AdminHome = () => {
             <CarCard1 key={car._id} carData={car} />
           ))}
         </ul>
+
+        <Footer/>
         </div>
   );
 };

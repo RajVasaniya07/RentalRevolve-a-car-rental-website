@@ -68,9 +68,9 @@ const Main = () => {
               </nav>
               <div className="header-actions">
                 
-              <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick}>
+              {/* <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick}>
                   <span id="aria-label-txt">Home</span>
-                </button>
+                </button> */}
 
                 <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick1}>
                   <span id="aria-label-txt">charts</span>

@@ -51,6 +51,8 @@ const Header = () => {
       <header className="header" data-header>
             <div className="container">
               <div className="overlay" data-overlay />
+              <h1 className="h2" style={{fontSize:"35px",marginTop:"10px",color:"#1A9DF4"}}>RentalRevolve</h1>
+
               <a href="#" className="logo">
               </a>
               <nav className="navbar" data-navbar>
@@ -60,9 +62,9 @@ const Header = () => {
               </nav>
               <div className="header-actions">
                 
-              <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick}>
+              {/* <button className="btn" aria-labelledby="aria-label-txt" onClick={onclick}>
                   <span id="aria-label-txt">Home</span>
-                </button>
+                </button> */}
 
                 <button className="btn" aria-labelledby="aria-label-txt" onClick={handleLogout1}>
                   <span id="aria-label-txt">			{localStorage.getItem('email') ? 'Logout' : 'Login'}
@@ -77,7 +79,7 @@ const Header = () => {
               
 
                 <button className="btn" aria-labelledby="aria-label-txt" href="/BookingCar" onClick={handleLogout}>
-                  <span id="aria-label-txt">Booking detail's</span>
+                  <span id="aria-label-txt">Form</span>
                 </button>
                 <button className="btn user-btn" aria-label="Profile">
                 <ion-icon name="person-outline" />

@@ -9,6 +9,8 @@ export const submitRentalForm = (rentalData) => async (dispatch) => {
   try {
     // Send a POST request to your server to handle the database interaction
     const response = await axios.post("/api/rentals/addRental", rentalData);
+    // const email = await axios.post("/api/rentals/check-car-and-send-email", rentalData);
+
 
     // Dispatch the action with the response data
     dispatch({

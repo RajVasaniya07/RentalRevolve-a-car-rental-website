@@ -86,6 +86,7 @@ setCurrentBooking(currentBooking)
 
 
   }, []);
+
   const rent1 = rental.find((rent) => rent._id === id);
 
 
@@ -100,6 +101,8 @@ setCurrentBooking(currentBooking)
       setEmail(rent1.email);
       setTotalAmount(rent1.totalAmount);
       setSuggestionComplaint(rent1.suggestionComplaint);
+      setBookingId(rent1.bookingId);
+      console.log(bookingId);
     }
   }, [rent1]);
   useEffect(() => {
@@ -115,9 +118,9 @@ setCurrentBooking(currentBooking)
     setStatus(newStatus);
 
     // Reset drop time to null when status is "pending"
-    if (newStatus === "pending") {
-      setDropTime(null);
-    }
+    // if (newStatus === "pending") {
+    //   setDropTime(null);
+    // }
   };
 
   const handleSubmit = async (e) => {
@@ -144,7 +147,7 @@ setCurrentBooking(currentBooking)
       documentVerified,
       status,
       carId,
-      // bookingId,
+       bookingId,
     };
 
     // Log the rentalData to the console
@@ -158,7 +161,7 @@ setCurrentBooking(currentBooking)
       dispatch(submitRentalForm(rentalData));
     }
 
-    window.location = "/employeeDash";
+    // window.location = "/employeeDash";
     // Dispatch the action with the rental data
 
     // Make an asynchronous call
@@ -189,9 +192,18 @@ setCurrentBooking(currentBooking)
       window.location = "/afterHome";
     }
   };
+
+
   const calculateDropTimeValue = (pickupTime, dropTime) => {
+    console.log(rent1);
+
+
+    console.log(bookingId);
+    if(pickupTime){
+      if(rent1 && bookingId){
     const book1 = bookings.find((rent) => rent._id === rent1.bookingId);
     const date = book1.bookedTimeSlots.to
+    console.log(rent1);
     pickupTime=date;
     // Convert pickup and drop time strings to Date objects
     const pickupDateTime = new Date(pickupTime);
@@ -209,13 +221,59 @@ setCurrentBooking(currentBooking)
     
     // Update the dropTimeValue state
     setDropTimeValue(fineAmount);
+      }
+      else{
+        console.log("nnnnnnnnnn");
+      }
+    }
+    else{
+      console.log("mmmmmmmmmmmmmmmm");
+    }
   };
+
+
+
+  // const calculateDropTimeValue = (pickupTime, dropTime) => {
+  //   console.log(rent1);
+
+  //   // Check if rent1 is defined and contains a bookingId
+  //   if (rent1 && rent1.bookingId) {
+  //     const book1 = bookings.find((rent) => rent._id === rent1.bookingId);
+  //     if (book1) {
+  //       const date = book1.bookedTimeSlots.to;
+  //       pickupTime = date;
+  //       console.log(date);
+  //       console.log(pickupTime);
+  //       // Convert pickup and drop time strings to Date objects
+  //       const pickupDateTime = new Date(pickupTime);
+  //       const dropDateTime = new Date(dropTime);
+  
+  //       // Calculate the time difference in milliseconds
+  //       const timeDifferenceMs = dropDateTime - pickupDateTime;
+  
+  //       const timeDifferenceHours = timeDifferenceMs / (1000 * 60 * 60);
+  //       const fineAmount = parseInt(timeDifferenceHours * 350);
+  
+  //       // Update the dropTimeValue state
+  //       setDropTimeValue(fineAmount);
+  //     } else {
+  //       console.log('Booking not found');
+  //     }
+  //   } else {
+  //     console.log('Invalid rent1 or bookingId');
+  //   }
+  // };
+
+  useEffect(() => {
+    calculateDropTimeValue(pickupTime, dropTime);
+  }, [pickupTime, dropTime]);
+  
 
   return (<div>
 <header className="header" data-header>
     <div className="container">
       <div className="overlay" data-overlay />
-      <h1 className="h2" style={{fontSize:"35px",marginTop:"10px",color:"#1A9DF4"}}>RentalRevolve</h1>
+      <h1 className="h2" style={{fontSize:"35px",marginTop:"10px",color:"#1A9DF4",fontWeight:"bold"}}>RentalRevolve</h1>
 
       <a href="#" className="logo"></a>
       <nav className="navbar" data-navbar>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
+import loginback from "../../images/loginback.jpg"
 
 const Signup = () => {
 	const [data, setData] = useState({
@@ -36,12 +37,12 @@ const Signup = () => {
 	};
 
 	return (
-		<div className={styles.signup_container}>
+		<div className={styles.signup_container} style={{backgroundImage: `url(${loginback})`}}>
 			<div className={styles.signup_form_container}>
 				<div className={styles.left}>
 					<h1>Welcome Back</h1>
 					<Link to="/adminLogin">
-						<button type="button" className={styles.white_btn}style={{background:"white",color:"#092635"}}>
+						<button type="button" className={styles.white_btn}style={{background:"white",color:"#092635",fontWeight:"bold"}}>
 							Sign in
 						</button>
 					</Link>

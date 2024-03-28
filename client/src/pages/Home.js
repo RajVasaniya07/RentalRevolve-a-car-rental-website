@@ -161,7 +161,7 @@ function NewComponent() {
               <section className="section hero" id="home">
                 <div className="container">
                   <div className="hero-content">
-                    <h2 className="h1 hero-title">The easy way to takeover a lease</h2>
+                    <h2 className="h1 hero-title">Drive Your Dreams with RentalRevolve</h2>
                     <p className="hero-text">
                       Live in Rajkot, Ahmedabad and Surat!
                     </p>

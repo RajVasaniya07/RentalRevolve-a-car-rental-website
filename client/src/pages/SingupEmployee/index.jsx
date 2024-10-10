@@ -42,7 +42,7 @@ const Signup = () => {
 		};
 		
 		const onclick = () => {
-		window.location ="/";
+		window.location ="/new";
 		};
 
 		const onclick1=()=>

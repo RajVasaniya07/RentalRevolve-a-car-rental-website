@@ -226,7 +226,7 @@ function NewComponent() {
                         </div>
                         <h3 className="card-title">Create a profile</h3>
                         <p className="card-text">
-                          If you are going to use a passage of Lorem Ipsum, you need to be sure.
+                          Create profile by clicking on login button and providing basic details.
                         </p>
                         <a href="#" className="card-link">Get started</a>
                       </div>
@@ -238,8 +238,7 @@ function NewComponent() {
                         </div>
                         <h3 className="card-title">Tell us what car you want</h3>
                         <p className="card-text">
-                          Various versions have evolved over the years, sometimes by accident, sometimes on purpose
-                        </p>
+                          Apply Different filters on car based on your requirement and book available car              </p>
                       </div>
                     </li>
                     <li>
@@ -247,9 +246,9 @@ function NewComponent() {
                         <div className="card-icon icon-3">
                           <ion-icon name="person-outline" />
                         </div>
-                        <h3 className="card-title">Match with seller</h3>
+                        <h3 className="card-title">Booking</h3>
                         <p className="card-text">
-                          It to make a type specimen book. It has survived not only five centuries ok ok ok ok
+                          Rrequire car available then book by selecting timeslot and select driver required if needed 
                         </p>
                       </div>
                     </li>
@@ -260,7 +259,7 @@ function NewComponent() {
                         </div>
                         <h3 className="card-title">Make a deal</h3>
                         <p className="card-text">
-                          There are many variations of passages of Lorem available, but the majority have suffered alteration
+                          Confirm booking by clicking on Book now button and make payment
                         </p>
                       </div>
                     </li>

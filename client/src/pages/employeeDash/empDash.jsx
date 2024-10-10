@@ -179,7 +179,7 @@ const [selectedDate, setSelectedDate] = useState(todayDate);
           {bookings.map((booking) => {
             const date1 = booking.bookedTimeSlots.from.slice(0,11);
             // console.log(date1);
-            if(selectedDate===date1 ){
+            if(selectedDate===date1 && booking.car){
               return (
                 <Row gutter={16} className="bs1 mt-3 text-left">
                   <Col lg={6} sm={24}>

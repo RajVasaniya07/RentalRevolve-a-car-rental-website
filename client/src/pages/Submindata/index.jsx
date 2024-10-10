@@ -161,7 +161,7 @@ setCurrentBooking(currentBooking)
       dispatch(submitRentalForm(rentalData));
     }
 
-    // window.location = "/employeeDash";
+     window.location = "/employeeDash";
     // Dispatch the action with the rental data
 
     // Make an asynchronous call
@@ -201,8 +201,14 @@ setCurrentBooking(currentBooking)
     console.log(bookingId);
     if(pickupTime){
       if(rent1 && bookingId){
-    const book1 = bookings.find((rent) => rent._id === rent1.bookingId);
-    const date = book1.bookedTimeSlots.to
+        const book1 = bookings.find((rent) => rent._id === rent1.bookingId);
+        if (book1) {
+          var date = book1.bookedTimeSlots.to;
+          // Other calculations
+        } else {
+          console.log("Booking not found");
+        }
+        
     console.log(rent1);
     pickupTime=date;
     // Convert pickup and drop time strings to Date objects
